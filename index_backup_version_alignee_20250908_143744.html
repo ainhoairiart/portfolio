@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio – Ainhoa</title>
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="node_modules/swiper/swiper-bundle.min.css">
+
+  <style>
+    @font-face {
+      font-family: 'Brittany';
+      src: url('fonts/Brittany.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    :root{
+      --terra:#AF7B60;
+      --beige:#E7D6B9;
+      --ink:#553B2C;
+      --circle:#A19987;
+      --radius-xl:28px;
+      --aboutH: clamp(320px, 45vh, 540px);
+      --container-max: 1360px;
+      --container-pad: 70px;
+      --gap: 32px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body{
+      margin:0;
+      background:#ffffff;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      color:var(--ink);
+    }
+
+    /* Section 1 - Header + Hero */
+    .shell{
+      max-width: 1360px;
+      margin: 25px auto 15px auto;
+      background: var(--beige);
+      border-radius: var(--radius-xl);
+      padding: 25px 70px;
+      border: 2px solid #fff;
+    }
+
+    .nav{
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+
+    .nav__left, .nav__right{
+      display: flex;
+      gap: 46px;
+    }
+
+    .nav__left{
+      justify-content: center;
+    }
+
+    .nav__right{
+      justify-content: center;
+    }
+
+    .nav a{
+      font-size: 22px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav a.is-active{
+      text-decoration: underline;
+      text-underline-offset: 6px;
+    }
+
+    .brand{
+      font-family: 'Brittany', cursive;
+      font-size: 64px;
+      font-weight: normal;
+      color: var(--ink);
+    }
+
+    .hero{
+      display: grid;
+      grid-template-columns: 520px 1fr;
+      align-items: center;
+      gap: 100px;
+      margin-top: 24px;
+    }
+
+    .illust{
+      position: relative;
+      width: 410px;
+      height: 410px;
+    }
+
+    .illust::before{
+      content: "";
+      position: absolute;
+      inset: 40px;
+      border-radius: 50%;
+      background: var(--circle);
+      opacity: .55;
+      z-index: 0;
+    }
+
+    .char{
+      position: absolute;
+      left: 45px;
+      bottom: 0;
+      width: 415px;
+      border-radius: 24px;
+      z-index: 2;
+    }
+
+    .leaf{
+      position: absolute;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .leaf-top{
+      width: 65px;
+      top: 35px;
+      right: -23px;
+      transform: rotate(-8deg);
+    }
+
+    .leaf-bottom{
+      width: 80px;
+      bottom: 80px;
+      left: 31px;
+    }
+
+    .kicker{
+      font-family: Georgia, serif;
+      font-size: 40px;
+      margin: 0 0 12px 0;
+    }
+
+    .hero__name{
+      font-size: 72px;
+      font-weight: 900;
+      color: var(--terra);
+      margin: 0 0 18px 0;
+    }
+
+    .lead{
+      font-size: 22px;
+      line-height: 1.6;
+      word-spacing: 3px;
+      max-width: 840px;
+    }
+
+    /* Section À propos - EXACTEMENT comme shell SANS padding */
+    .section-about{
+      max-width: 1360px;
+      margin: 25px auto 15px auto;  /* MÊME margin que shell */
+      border: 2px solid transparent; /* Compensation pour la border de shell */
+    }
+
+    .about-grid{
+      display: grid;
+      grid-template-columns: 3fr 2fr; /* colonnes asymétriques comme demandé */
+      gap: var(--gap);                /* on garde le même espace */
+      align-items: stretch;
+      min-height: 300px;
+    }
+
+    .about-card{
+      border-radius: 24px;
+      overflow: hidden;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .about-text{
+      background: var(--terra);
+      color: #2B1E17;
+      padding: clamp(20px, 2.5vw, 40px);
+      justify-content: center;
+    }
+
+    .about-text h2{
+      font-family: Georgia, serif;
+      font-size: 40px;
+      line-height: 1.2;
+      margin: 0 0 16px;
+      color: #3b2f28;
+    }
+
+    .about-text p{
+      font-size: 22px;
+      line-height: 1.8;
+      margin: 0 0 18px;
+      color: #2e2620;
+    }
+
+    .about-btn{
+      display: inline-block;
+      background: #E8B46E;
+      color: #3b2f28;
+      font-weight: 700;
+      padding: .75rem 1.1rem;
+      border-radius: 999px;
+      text-decoration: none;
+    }
+
+    .about-media{
+      position: relative;
+      min-height: var(--aboutH);
+      margin: 0;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .about-media img{
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* Section Objectifs - EXACTEMENT comme shell SANS padding */
+    .section-objectifs{
+      max-width: 1360px;
+      margin: 25px auto 15px auto;  /* MÊME margin que shell */
+      border: 2px solid transparent; /* Compensation pour la border de shell */
+    }
+
+    .objectifs-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(16px, 0.5vw, 24px);
+      min-height: 300px;
+    }
+
+    .objectifs-card{
+      border-radius: 24px;
+      overflow: hidden;
+      min-height: var(--aboutH); /* ✅ même hauteur pour texte + image */
+      display: flex;             /* utile pour bien centrer le contenu texte */
+      flex-direction: column;
+    }
+
+    .objectifs-media{
+      position: relative;
+      min-height: 300px;
+      margin: 0;
+    }
+
+    .objectifs-media img{
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .objectifs-text{
+      background: var(--terra);
+      color: #2B1E17;
+      padding: clamp(20px, 2.5vw, 40px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .objectifs-text h2{
+      font-family: Georgia, serif;
+      font-size: 40px;
+      line-height: 1.2;
+      margin: 0 0 16px;
+      color: #3b2f28;
+    }
+
+    .objectifs-text p{
+      font-size: 22px;
+      line-height: 1.8;
+      margin: 0 0 18px;
+      color: #2e2620;
+    }
+
+    /* Section Mes projets - EXACTEMENT comme shell SANS padding */
+    .section-projects{
+      max-width: 1360px;
+      margin: 25px auto 15px auto;  /* MÊME margin que shell */
+      border: 2px solid transparent; /* Compensation pour la border de shell */
+    }
+
+    .projects-container{
+      background: var(--beige);
+      border-radius: 24px;
+      padding: 40px;
+      position: relative;
+    }
+
+    .projects-title{
+      font-family: Georgia, serif;
+      font-size: 40px;
+      line-height: 1.2;
+      margin: 0 0 40px 0;
+      color: var(--ink);
+      text-align: left;
+    }
+
+    /* Swiper Carrousel */
+    .swiper{
+      width: 100%;
+      height: auto;
+      padding-bottom: 50px;
+    }
+
+    .swiper-slide{
+      width: 300px;
+      height: auto;
+    }
+
+    .card{
+      background: var(--terra);
+      border-radius: 20px;
+      overflow: hidden;
+      height: 400px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-img{
+      height: 200px;
+      background: url('https://picsum.photos/300/200') center/cover;
+    }
+
+    .card-content{
+      padding: 20px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-content h3{
+      font-size: 20px;
+      margin: 0 0 10px 0;
+      color: #2B1E17;
+    }
+
+    .card-content p{
+      font-size: 16px;
+      margin: 5px 0;
+      color: #2e2620;
+    }
+
+    .card-content button{
+      background: #E8B46E;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 15px;
+      cursor: pointer;
+      color: #3b2f28;
+      font-weight: 600;
+      align-self: flex-start;
+    }
+
+    /* Navigation Swiper */
+    .swiper-button-next,
+    .swiper-button-prev{
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #F2E7D4;
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
+      top: 50%;
+      margin-top: -26px;
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after{
+      font-size: 18px;
+      color: #7a6d60;
+      font-weight: bold;
+    }
+
+    .swiper-button-prev{
+      left: 10px;
+    }
+
+    .swiper-button-next{
+      right: 10px;
+    }
+
+    /* Pagination */
+    .swiper-pagination{
+      bottom: 10px !important;
+    }
+
+    .swiper-pagination-bullet{
+      width: 12px;
+      height: 12px;
+      opacity: 0.45;
+      background: var(--circle);
+    }
+
+    .swiper-pagination-bullet-active{
+      transform: scale(1.25);
+      opacity: 1;
+      background: var(--ink);
+    }
+
+    /* Menu burger styles */
+    .burger-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .burger-line {
+      width: 25px;
+      height: 3px;
+      background-color: var(--ink);
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--beige);
+      z-index: 1000;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-mobile.active {
+      display: flex;
+    }
+
+    .nav-mobile a {
+      font-size: 24px;
+      color: var(--ink);
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+
+    .nav-mobile a.is-active,
+    .nav-mobile a:hover {
+      background: rgba(175, 123, 96, 0.1);
+      border-color: var(--terra);
+    }
+
+    .close-menu {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 30px;
+      cursor: pointer;
+      color: var(--ink);
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .shell {
+        padding: 20px;
+        margin: 15px;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .burger-menu {
+        display: flex;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1001;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+      }
+
+      .illust {
+        justify-self: center;
+      }
+
+      .section-about,
+      .section-objectifs,
+      .section-projects {
+        padding: 0 20px;
+      }
+
+      .about-grid,
+      .objectifs-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .projects-container {
+        padding: 20px;
+      }
+
+      .swiper-slide {
+        width: 250px;
+      }
+
+      .card {
+        height: 350px;
+      }
+
+      .card-img {
+        height: 150px;
+      }
+
+      .card-content {
+        height: 200px;
+        padding: 15px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .brand {
+        font-size: 48px;
+      }
+
+      .hero__name {
+        font-size: 48px;
+      }
+
+      .kicker {
+        font-size: 28px;
+      }
+
+      .lead {
+        font-size: 18px;
+      }
+
+      .about-text h2,
+      .objectifs-text h2,
+      .projects-title {
+        font-size: 28px;
+      }
+
+      .about-text p,
+      .objectifs-text p {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Section 1 : Header + Navigation -->
+  <header class="shell">
+    <!-- Menu burger mobile -->
+    <div class="burger-menu" onclick="toggleMenu()">
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+    </div>
+
+    <!-- Navigation mobile -->
+    <nav class="nav-mobile" id="navMobile">
+      <span class="close-menu" onclick="toggleMenu()">&times;</span>
+      <a href="#home" class="is-active">Accueil</a>
+      <a href="#projects">Mes projets</a>
+      <a href="#about">À propos</a>
+      <a href="#contact">Me contacter</a>
+    </nav>
+
+    <!-- Navigation desktop -->
+    <nav class="nav">
+      <ul class="nav__left">
+        <li><a href="#home" class="is-active">Accueil</a></li>
+        <li><a href="#projects">Mes projets</a></li>
+      </ul>
+
+      <a class="brand" href="#home">Ainhoa</a>
+
+      <ul class="nav__right">
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#contact">Me contacter</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <figure class="illust">
+        <img class="char" src="assets/ainhoa-illustration.png" alt="Ainhoa"/>
+        <img class="leaf leaf-top" src="assets/ainhoa-illustration-feuille1.png" alt="" aria-hidden="true" />
+        <img class="leaf leaf-bottom" src="assets/ainhoa-illustration-feuille2.png" alt="" aria-hidden="true" />
+      </figure>
+
+      <div class="hero__text">
+        <p class="kicker">Hey there</p>
+        <h1 class="hero__name">Ainhoa IRIART</h1>
+        <p class="lead">
+          UX Designer & Développeuse passionnée, je donne vie à vos idées digitales.
+        </p>
+      </div>
+    </section>
+  </header>
+
+  <!-- Section À propos -->
+  <section class="section-about">
+    <div class="about-grid">
+      <article class="about-card about-text">
+        <h2>À propos de moi</h2>
+        <p>
+          Je m'appelle Ainhoa Iriart, diplômée d'un DUT Informatique (IUT Rangueil,
+          Toulouse) et d'un Bachelor en Conception et Développement d'Applications
+          (CESI Labège).
+        </p>
+        <p>
+          Aujourd'hui, je me spécialise en UX/UI Design, un domaine qui me passionne.
+        </p>
+        <a class="about-btn" href="#apropos-detail">En savoir plus</a>
+      </article>
+
+      <figure class="about-card about-media">
+        <img src="assets/image_chat.png" alt="Chat blanc et roux couché sur des feuilles" />
+      </figure>
+    </div>
+  </section>
+
+  <!-- Section Objectifs -->
+  <section class="section-objectifs">
+    <div class="objectifs-grid">
+      <figure class="objectifs-card objectifs-media">
+        <img src="assets/ainhoa-illustration-tassecafe-objectif.jpeg" alt="Ainhoa avec une tasse de café" />
+      </figure>
+
+      <article class="objectifs-card objectifs-text">
+        <h2>Mes objectifs</h2>
+        <p>
+          Valoriser ma double compétence en UX/UI design et en développement afin de concevoir des interfaces à la fois intuitives, efficaces et agréables à utiliser.
+        </p>
+        <p>
+          Mon ambition : offrir des expériences utilisateur fluides, pensées avec sens et orientées vers la qualité.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Section Mes projets -->
+  <section class="section-projects">
+    <div class="projects-container">
+      <h2 class="projects-title">Mes projets</h2>
+
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <div class="card">
+              <div class="card-img"></div>
+              <div class="card-content">
+                <h3>Refonte e-commerce</h3>
+                <p>Maison Terre Cuite</p>
+                <p>UX/UI Designer</p>
+                <button>En savoir plus</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <div class="card">
+              <div class="card-img"></div>
+              <div class="card-content">
+                <h3>Dashboard analytics</h3>
+                <p>Akanea Digital</p>
+                <p>Design système</p>
+                <button>En savoir plus</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <div class="card">
+              <div class="card-img"></div>
+              <div class="card-content">
+                <h3>Application mobile</h3>
+                <p>StartUp TechFlow</p>
+                <p>UX Designer</p>
+                <button>En savoir plus</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="swiper-slide">
+            <div class="card">
+              <div class="card-img"></div>
+              <div class="card-content">
+                <h3>Site vitrine</h3>
+                <p>Cabinet d'architecture</p>
+                <p>Webdesigner</p>
+                <button>En savoir plus</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="swiper-slide">
+            <div class="card">
+              <div class="card-img"></div>
+              <div class="card-content">
+                <h3>Plateforme SaaS</h3>
+                <p>Innovation Labs</p>
+                <p>Lead Designer</p>
+                <button>En savoir plus</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Swiper JS -->
+  <script src="node_modules/swiper/swiper-bundle.min.js"></script>
+
+  <script>
+    // Menu burger toggle
+    function toggleMenu() {
+      const navMobile = document.getElementById('navMobile');
+      navMobile.classList.toggle('active');
+    }
+
+    // Swiper initialization
+    const swiper = new Swiper('.swiper', {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      centeredSlides: true,
+      loop: true,
+      grabCursor: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 20
+        },
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 30
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

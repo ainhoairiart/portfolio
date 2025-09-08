@@ -1,0 +1,773 @@
+/* ===== VARIABLES CSS GLOBALES ===== */
+:root{
+  /* Anciennes variables pour compatibilité */
+  --terra:#AF7B60;
+  --beige:#E7D6B9;
+  --ink:#553B2C;
+  --circle:#A19987;
+  --radius-xl:28px;
+
+  /* NOUVELLES VARIABLES UNIFORMISÉES */
+  --container-max: 1360px; /* largeur max remise à la valeur d'origine */
+  --container-pad: 20px; /* padding conservé à 20px */
+  --gap: clamp(16px, 0.5vw, 24px); /* gap modifié avec 0.5vw au lieu de 2vw */
+  --radius: 24px;
+  --aboutH: clamp(300px, 45vh, 540px); /* hauteur minimale augmentée à 300px */
+  --brown:#AF7B60;
+  --beige:#E7D6B9;
+  --text:#2B1E17;
+}
+
+/* ===== RESET SAFE POUR ÉVITER LES SURPRISES ===== */
+* { box-sizing: border-box; }
+img, svg, video, canvas { display:block; max-width:100%; height:auto; }
+h1,h2,h3,p { margin:0; }
+button { all:unset; cursor:pointer; }
+
+/* 1) CONTAINER GLOBAL – même largeur et même padding pour TOUTES les sections */
+.container{
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+/* 2) ESPACEMENT SECTIONS – identique entre "présentation" et "section-2" */
+.section{
+  margin-block: 10px; /* marge en haut et bas fixée à 10px */
+}
+
+/* Marge spécifique pour le bloc 1 (section présentation) */
+.section:first-of-type {
+  margin-top: 17px; /* marge en haut de 17px pour le bloc 1 seulement */
+}
+
+/* 3) NE LAISSE PAS LES MARGES INTERNES "POUSSER" LE HAUT (anti-collapsing) */
+.section .card > *:first-child{ margin-top: 0; }
+.section .card > *:last-child{ margin-bottom: 0; }
+
+/* ===== STYLES DE BASE ===== */
+@font-face {
+  font-family: 'Brittany';
+  src: url('fonts/Brittany.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body{
+  margin:0;
+  background:#ffffff;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  color:var(--ink);
+  overflow-x: hidden;
+}
+
+/* ===== SECTION 1 : HEADER + HERO (adaptée au nouveau système) ===== */
+.shell{
+  background: var(--beige);
+  border-radius: var(--radius-xl);
+  padding: 25px 50px; /* padding fixe original restauré */
+  border: 2px solid #fff;
+  box-sizing: border-box;
+}
+
+/* NAV */
+.nav{
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+}
+
+.nav__left, .nav__right{
+  display: flex;
+  gap: 46px;
+}
+
+.nav__left {
+  justify-content: center;
+}
+
+.nav__right{
+  justify-content: center;
+}
+
+.nav ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 46px;
+}
+
+.nav a{
+  font-size: 22px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav a.is-active{
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+/* Logo central – Brittany */
+.brand{
+  font-family: 'Brittany', cursive;
+  font-size: 64px;
+  font-weight: normal;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+/* HERO */
+.hero{
+  display: grid;
+  grid-template-columns: 520px 1fr;
+  align-items: center;
+  gap: 60px;
+  margin-top: 24px;
+}
+
+.illust{
+  position: relative;
+  width: 520px;
+  height: 520px;
+}
+
+.illust::before{
+  content: "";
+  position: absolute;
+  inset: 40px;
+  border-radius: 50%;
+  background: var(--circle);
+  opacity: .55;
+  z-index: 0;
+}
+
+.char{
+  position: absolute;
+  left: 45px;
+  bottom: 0;
+  width: 415px;
+  border-radius: 24px;
+  z-index: 2;
+}
+
+.leaf{
+  position: absolute;
+  pointer-events: none;
+}
+
+.leaf-top{
+  width: 65px;
+  top: 35px;
+  right: -13px;
+  z-index: 1;
+  transform: rotate(-8deg);
+}
+
+.leaf-bottom{
+  width: 80px;
+  bottom: 80px;
+  left: 21px;
+  z-index: 1;
+}
+
+.kicker{
+  font-family: Georgia, serif;
+  font-size: 40px;
+  margin: 0 0 12px 0;
+}
+
+.hero__name{
+  font-size: 72px;
+  font-weight: 900;
+  color: var(--terra);
+  margin: 0 0 18px 0;
+}
+
+.lead{
+  font-size: 22px;
+  line-height: 1.6;
+  word-spacing: 3px;
+  max-width: 840px;
+}
+
+/* ====== SECTION 2 (about) ====== */
+.section-2 .grid{
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* le bloc texte prend 2 fois plus de place que l'image */
+  gap: var(--gap);
+  align-items: stretch;
+  min-height: 300px; /* hauteur fixe de 300px pour obtenir 1149 x 300 */
+}
+
+.section-2 .card{
+  border-radius: var(--radius);
+  overflow: hidden;
+  min-height: 300px; /* même hauteur pour les cartes */
+  /* suppression de la largeur fixe pour laisser le grid gérer */
+}
+
+.section-2 .col-text{
+  background: var(--brown);
+  color: var(--text);
+  padding: clamp(20px, 2.5vw, 40px);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap: .8rem;
+}
+
+.section-2 .col-text h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(24px, 3vw, 32px);
+  color: var(--text);
+}
+
+.section-2 .col-text p {
+  font-size: clamp(14px, 1.5vw, 18px);
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.section-2 .col-media{
+  background-image: url("assets/image_chat.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Style du bouton */
+.btn{
+  background: var(--beige);
+  color: var(--text);
+  padding: 10px 18px;
+  border-radius: 999px;
+  display:inline-block;
+  font-weight: 700;
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+/* ====== SECTION 3 (Mes objectifs - image à gauche, texte à droite) ====== */
+.section-3 .grid{
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* l'image prend 1 part, le texte 2 parts */
+  gap: var(--gap);
+  align-items: stretch;
+  min-height: 300px; /* même hauteur que la section précédente */
+}
+
+.section-3 .card{
+  border-radius: var(--radius);
+  overflow: hidden;
+  min-height: 300px; /* même hauteur pour les cartes */
+}
+
+.section-3 .col-text{
+  background: var(--brown);
+  color: var(--text);
+  padding: clamp(20px, 2.5vw, 40px);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap: .8rem;
+}
+
+.section-3 .col-text h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(24px, 3vw, 32px);
+  color: var(--text);
+}
+
+.section-3 .col-text p {
+  font-size: clamp(14px, 1.5vw, 18px);
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* Image pour la section objectifs - vous pouvez changer l'image ici */
+.col-media-objectifs{
+  background-image: url("assets/ainhoa-illustration-tassecafe-objectif.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ===== MENU MOBILE (MASQUÉ PAR DÉFAUT) ===== */
+.mobile-menu {
+  display: none; /* masqué par défaut */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(231, 214, 185, 0.95);
+  z-index: 1000;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mobile-menu a {
+  font-size: 24px;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  transition: background 0.3s ease;
+}
+
+.mobile-menu a.is-active {
+  background: var(--brown);
+  color: white;
+}
+
+.mobile-menu a:hover {
+  background: rgba(175, 123, 96, 0.2);
+}
+
+/* BOUTON BURGER (MASQUÉ PAR DÉFAUT SUR DESKTOP) */
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1001;
+}
+
+.burger-line {
+  width: 100%;
+  height: 3px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* États du burger menu */
+.burger-menu.active .burger-line:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+.burger-menu.active .burger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-menu.active .burger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Affichage du menu mobile quand activé */
+.mobile-menu.active {
+  display: flex;
+}
+
+/* ====== SECTION 4 (Mes projets - avec titre) ====== */
+.shell-projects{
+  background: var(--beige);
+  border-radius: var(--radius-xl);
+  padding: 25px 50px; /* même padding que .shell */
+  border: 2px solid #fff;
+  box-sizing: border-box;
+  min-height: 649px; /* hauteur de 649px */
+}
+
+.shell-projects .projects-title {
+  font-family: Georgia, serif;
+  font-size: clamp(24px, 3vw, 32px); /* même taille que les titres des autres sections */
+  color: var(--text); /* même couleur que les titres des autres sections */
+  margin: 0 0 30px 0;
+  text-align: left; /* aligné à gauche comme "À propos de moi" */
+}
+
+.shell-projects .grid{
+  display: block; /* Plus de grille, juste un bloc */
+  width: 100%;
+  height: calc(100% - 80px); /* Moins la hauteur du titre et sa marge */
+  min-height: 519px; /* 649px - 50px padding - 80px titre et marge */
+}
+
+.shell-projects .card{
+  border-radius: var(--radius);
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  min-height: 599px;
+}
+
+/* Image pour la section projets - occupe tout l'espace */
+.shell-projects .col-media-projets{
+  background-image: url("assets/projet1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+}
+
+/* ====== SECTION 4 : MES PROJETS (Carrousel Swiper) ====== */
+.section-projets {
+  margin-block: 10px; /* même espacement que les autres sections */
+}
+
+.shell-projets {
+  background: var(--beige);
+  border-radius: var(--radius-xl);
+  padding: 25px 50px; /* même padding que .shell */
+  border: 2px solid #fff;
+  box-sizing: border-box;
+  min-height: 649px; /* hauteur de 649px comme demandé */
+}
+
+.projects-title {
+  font-family: Georgia, serif;
+  font-size: 40px; /* même taille que "À propos de moi" */
+  color: var(--text);
+  margin: 0 0 30px 0;
+  text-align: left; /* aligné à gauche comme les autres titres */
+}
+
+/* Swiper container - RESTAURÉ COMME AVANT */
+.mes-projets-swiper {
+  width: 100%;
+  height: calc(100% - 120px);
+  overflow: visible !important; /* IMPORTANT : visible pour voir les effets */
+  padding: 0 60px 56px 60px !important; /* Espace pour les flèches */
+  margin: 0 -60px !important; /* Compenser le padding */
+  position: relative;
+}
+
+.mes-projets-swiper .swiper-wrapper {
+  align-items: center;
+}
+
+/* État par défaut : cartes plus petites + plus fades */
+.mes-projets-swiper .swiper-slide {
+  height: auto;
+  transform: scale(0.88); /* Retour aux valeurs originales */
+  opacity: 0.6;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease, box-shadow 0.4s ease;
+  transform-origin: center bottom; /* Retour à center bottom */
+  will-change: transform;
+}
+
+/* Cartes voisines, un peu plus grandes */
+.mes-projets-swiper .swiper-slide.swiper-slide-prev,
+.mes-projets-swiper .swiper-slide.swiper-slide-next {
+  transform: scale(0.92); /* Retour aux valeurs originales */
+  opacity: 0.8;
+}
+
+/* Carte centrale mise en avant */
+.mes-projets-swiper .swiper-slide.swiper-slide-active {
+  transform: scale(1.05); /* Retour à l'effet original plus grand */
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Cartes de projet - RETOUR AUX DIMENSIONS ORIGINALES */
+.project-card {
+  background: var(--brown);
+  border-radius: 24px;
+  overflow: visible !important; /* Visible pour les effets */
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  height: 340px; /* Retour à la hauteur originale */
+  display: flex;
+  flex-direction: column;
+  margin: 0 8px;
+  transition: box-shadow 0.4s ease;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Ombre spectaculaire pour la carte active */
+.mes-projets-swiper .swiper-slide.swiper-slide-active .project-card {
+  box-shadow: 0 20px 60px rgba(175, 123, 96, 0.3); /* Retour à l'ombre originale */
+}
+
+.project-img {
+  height: 170px; /* Retour à la hauteur originale */
+  background: linear-gradient(135deg, #A19987, #D4C4A8);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-radius: 24px 24px 0 0;
+}
+
+.project-content {
+  padding: 22px; /* Retour au padding original */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--text);
+}
+
+.project-content h3 {
+  font-family: Georgia, serif;
+  font-size: 21px; /* Retour à la taille originale */
+  margin: 0 0 12px 0;
+  color: #2B1E17;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.project-content .client {
+  font-size: 17px; /* Retour à la taille originale */
+  font-weight: 600;
+  margin: 0 0 6px 0;
+  color: #3B2F28;
+}
+
+.project-content .role {
+  font-size: 15px; /* Retour à la taille originale */
+  margin: 0 0 18px 0;
+  color: #4A3E37;
+  font-style: italic;
+}
+
+.btn-project {
+  background: #E8B46E;
+  color: #2B1E17;
+  padding: 12px 22px; /* Retour au padding original */
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 14px; /* Retour à la taille originale */
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(232, 180, 110, 0.3);
+}
+
+/* Container principal - RETOUR AUX DIMENSIONS ORIGINALES */
+.shell-projets {
+  background: var(--beige);
+  border-radius: var(--radius-xl);
+  padding: 25px 50px 85px 50px !important; /* Retour au padding original */
+  border: 2px solid #fff;
+  box-sizing: border-box;
+  min-height: 680px; /* Retour à la hauteur originale */
+  overflow: visible !important; /* Visible pour les effets */
+  position: relative;
+}
+
+/* Navigation Swiper - POSITION SIMPLE */
+.mes-projets-swiper .swiper-button-prev,
+.mes-projets-swiper .swiper-button-next {
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 50% !important;
+  background: #F2E7D4 !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08) !important; /* Ombre plus douce */
+  border: none !important;
+  margin-top: -26px !important;
+  opacity: 1 !important;
+  transition: all 0.3s ease !important;
+  z-index: 20 !important; /* Z-index plus élevé pour être au-dessus */
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+
+  /* IMPORTANT : Isoler les flèches des ombres environnantes */
+  isolation: isolate !important;
+  position: absolute !important;
+
+  /* Supprimer tous les styles par défaut de Swiper */
+  color: transparent !important;
+  font-family: inherit !important;
+}
+
+.mes-projets-swiper .swiper-button-prev:hover,
+.mes-projets-swiper .swiper-button-next:hover {
+  background: #E7D6B9 !important;
+  transform: translateY(-50%) scale(1.05) !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1) !important; /* Ombre hover plus douce */
+}
+
+/* IMPORTANT : Remplacer les icônes par défaut par nos propres icônes */
+.mes-projets-swiper .swiper-button-prev:after,
+.mes-projets-swiper .swiper-button-next:after {
+  font-family: inherit !important; /* Pas la font swiper-icons */
+  font-size: 0 !important; /* Masquer le texte par défaut */
+  content: '' !important; /* Vider le contenu par défaut */
+}
+
+/* Nouvelles icônes personnalisées avec des flèches Unicode */
+.mes-projets-swiper .swiper-button-prev:before {
+  content: '❮' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 18px !important;
+  color: #7a6d60 !important; /* Couleur terre */
+  font-weight: bold !important;
+  z-index: 1 !important;
+}
+
+.mes-projets-swiper .swiper-button-next:before {
+  content: '❯' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 18px !important;
+  color: #7a6d60 !important; /* Couleur terre */
+  font-weight: bold !important;
+  z-index: 1 !important;
+}
+
+.mes-projets-swiper .swiper-button-prev {
+  left: 10px !important;
+}
+
+.mes-projets-swiper .swiper-button-next {
+  right: 10px !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mes-projets {
+    padding: 1.5rem;
+  }
+
+  .mes-projets h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .card-img {
+    height: 160px;
+  }
+
+  .card-content {
+    padding: 1rem;
+  }
+
+  .shell-projets {
+    padding: 20px;
+    min-height: auto;
+  }
+
+  .projects-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .project-card {
+    height: 350px;
+    margin: 0 5px;
+  }
+
+  .project-img {
+    height: 150px;
+  }
+
+  .project-content {
+    padding: 20px;
+  }
+
+  .project-content h3 {
+    font-size: 20px;
+  }
+
+  .mes-projets-swiper .swiper-button-prev,
+  .mes-projets-swiper .swiper-button-next {
+    display: none; /* masquer les flèches sur mobile */
+  }
+}
+
+@media (max-width: 1200px) {
+  .project-card-single {
+    width: 95%;
+    height: auto;
+    min-height: 300px;
+  }
+
+  .project-image {
+    width: 350px;
+  }
+
+  .project-content {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-card-single {
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+  }
+
+  .project-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .project-content {
+    padding: 24px;
+  }
+
+  .project-title {
+    font-size: 24px;
+  }
+
+  .project-description {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-content {
+    padding: 20px;
+  }
+
+  .project-title {
+    font-size: 22px;
+  }
+
+  .project-description {
+    font-size: 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 900px){
+  .section-2 .grid{
+    grid-template-columns: 1fr;
+  }
+
+  /* Section 3 - responsive pour mobiles */
+  .section-3 .grid{
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .illust {
+    justify-self: center;
+  }
+
+  .nav__left, .nav__right {
+    display: none;
+  }
+
+  .burger-menu {
+    display: flex;
+  }
+}
