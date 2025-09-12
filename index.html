@@ -580,17 +580,136 @@
       border-radius: 999px;
       border: none;
       font-size: 18px;
-      transition: all 0.3s ease;
-      display: inline-block;
       cursor: pointer;
     }
 
-    .btn-contact:hover{
-      background: transparent;
-      color: #e8b46e;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(232, 180, 110, 0.3);
-      border: 2px solid #e8b46e;
+    /* Section Footer */
+    .section-footer{
+      max-width: 1360px;
+      margin: 25px auto 15px auto;
+      border: 2px solid transparent;
+    }
+
+    .footer-container{
+      background: #a19987;
+      border-radius: 24px;
+      padding: 40px;
+    }
+
+    .footer-content{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .footer-column{
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .footer-brand{
+      font-family: 'Brittany', cursive;
+      font-size: 48px;
+      color: #3b2f28;
+      margin: 0;
+    }
+
+    .footer-description{
+      font-size: 14px;
+      color: #3b2f28;
+      line-height: 1.5;
+      margin-top: 10px;
+      opacity: 0.8;
+    }
+
+    .footer-column h3{
+      font-family: Georgia, serif;
+      font-size: 18px;
+      color: #3b2f28;
+      margin: 0 0 15px 0;
+      font-weight: 600;
+    }
+
+    .footer-nav{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-nav a{
+      color: #3b2f28;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+      opacity: 0.8;
+    }
+
+    .footer-nav a:hover{
+      color: var(--terra);
+      opacity: 1;
+    }
+
+    .social-links{
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .social-link{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #3b2f28;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      opacity: 0.8;
+    }
+
+    .social-link:hover{
+      color: var(--terra);
+      opacity: 1;
+      transform: translateX(5px);
+    }
+
+    .social-icon{
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .legal-links{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .legal-links a{
+      color: #3b2f28;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+      opacity: 0.8;
+    }
+
+    .legal-links a:hover{
+      color: var(--terra);
+      opacity: 1;
+    }
+
+    .footer-bottom{
+      border-top: 1px solid rgba(59, 47, 40, 0.2);
+      padding-top: 20px;
+      margin-top: 30px;
+      text-align: center;
+      font-size: 12px;
+      color: #3b2f28;
+      opacity: 0.6;
     }
 
     /* Menu burger styles */
@@ -685,19 +804,25 @@
       .section-about,
       .section-objectifs,
       .section-projects,
-      .section-collaboration {
+      .section-collaboration,
+      .section-footer {
         padding: 0 20px;
       }
 
       .about-grid,
-      .objectifs-grid,
-      .collaboration-container {
+      .objectifs-grid {
         grid-template-columns: 1fr;
         gap: 20px;
       }
 
-      .projects-container {
+      .projects-container,
+      .footer-container {
         padding: 20px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
       }
 
       .swiper-slide {
@@ -746,6 +871,19 @@
       .objectifs-text p,
       .collaboration-text {
         font-size: 18px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .footer-brand {
+        font-size: 36px;
+      }
+
+      .footer-description {
+        font-size: 14px;
       }
     }
   </style>
@@ -951,10 +1089,59 @@
         <p class="collaboration-subtitle">
           Ensemble, créons quelque chose d'exceptionnel.
         </p>
-        <button class="btn-contact">Contactez-moi</button>
+
+        <a href="mailto:ainhoa@example.com" class="btn-contact">Contactez-moi</a>
       </div>
     </div>
   </section>
+
+  <!-- Section Footer -->
+  <footer class="section-footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h2 class="footer-brand" style="text-align: center;">Ainhoa</h2>
+        </div>
+
+        <div class="footer-column footer-nav">
+          <h3>Navigation</h3>
+          <a href="#home">Accueil</a>
+          <a href="#projects">Mes projets</a>
+          <a href="#about">À propos</a>
+          <a href="#contact">Me contacter</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>Réseaux sociaux</h3>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <span class="social-icon">📘</span> Facebook
+            </a>
+            <a href="#" class="social-link">
+              <span class="social-icon">🐦</span> Twitter
+            </a>
+            <a href="#" class="social-link">
+              <span class="social-icon">📷</span> Instagram
+            </a>
+            <a href="#" class="social-link">
+              <span class="social-icon">💼</span> LinkedIn
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-column legal-links">
+          <h3>Informations légales</h3>
+          <a href="#">Mentions légales</a>
+          <a href="#">Politique de confidentialité</a>
+          <a href="#">Conditions d'utilisation</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        &copy; 2023 Ainhoa Iriart. Tous droits réservés.
+      </div>
+    </div>
+  </footer>
 
   <!-- Swiper JS -->
   <script src="node_modules/swiper/swiper-bundle.min.js"></script>
