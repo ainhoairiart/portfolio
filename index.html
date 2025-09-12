@@ -175,17 +175,17 @@
       max-width: 840px;
     }
 
-    /* Section À propos - EXACTEMENT comme shell SANS padding */
+    /* Section À propos */
     .section-about{
       max-width: 1360px;
-      margin: 25px auto 15px auto;  /* MÊME margin que shell */
-      border: 2px solid transparent; /* Compensation pour la border de shell */
+      margin: 25px auto 15px auto;
+      border: 2px solid transparent;
     }
 
     .about-grid{
       display: grid;
-      grid-template-columns: 3fr 2fr; /* colonnes asymétriques comme demandé */
-      gap: var(--gap);                /* on garde le même espace */
+      grid-template-columns: 3fr 2fr;
+      gap: var(--gap);
       align-items: stretch;
       min-height: 300px;
     }
@@ -250,11 +250,11 @@
       object-position: center;
     }
 
-    /* Section Objectifs - EXACTEMENT comme shell SANS padding */
+    /* Section Objectifs */
     .section-objectifs{
       max-width: 1360px;
-      margin: 25px auto 15px auto;  /* MÊME margin que shell */
-      border: 2px solid transparent; /* Compensation pour la border de shell */
+      margin: 25px auto 15px auto;
+      border: 2px solid transparent;
     }
 
     .objectifs-grid{
@@ -267,8 +267,8 @@
     .objectifs-card{
       border-radius: 24px;
       overflow: hidden;
-      min-height: var(--aboutH); /* ✅ même hauteur pour texte + image */
-      display: flex;             /* utile pour bien centrer le contenu texte */
+      min-height: var(--aboutH);
+      display: flex;
       flex-direction: column;
     }
 
@@ -311,7 +311,7 @@
       color: #2e2620;
     }
 
-    /* Section Mes projets - Slider amélioré */
+    /* Section Mes projets */
     .section-projects{
       max-width: 1360px;
       margin: 25px auto 15px auto;
@@ -334,13 +334,11 @@
       text-align: left;
     }
 
-    /* Conteneur principal avec espace pour les flèches */
     .projects {
       position: relative;
-      padding-inline: 80px; /* Plus d'espace pour les flèches */
+      padding-inline: 80px;
     }
 
-    /* Le conteneur slider */
     .projects .myProjects {
       overflow: hidden;
       padding-bottom: 60px;
@@ -357,7 +355,6 @@
       transform: translateY(-8px);
     }
 
-    /* Cards redesignées avec un style plus moderne */
     .project-card {
       background: #af7a60;
       border-radius: 20px;
@@ -454,7 +451,6 @@
       box-shadow: 0 4px 12px rgba(232, 180, 110, 0.3);
     }
 
-    /* Boutons de navigation redesignés */
     .projects .nav {
       position: absolute;
       top: 50%;
@@ -488,7 +484,6 @@
       right: 10px;
     }
 
-    /* Icônes des flèches redesignées */
     .projects .nav::before{
       content: '';
       display: block;
@@ -511,18 +506,6 @@
       border-color: var(--beige);
     }
 
-    .projects .nav:focus-visible {
-      outline: 3px solid var(--terra);
-      outline-offset: 3px;
-    }
-
-    .projects .nav:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-      pointer-events: none;
-    }
-
-    /* Pagination redesignée */
     .swiper-pagination{
       bottom: 20px !important;
     }
@@ -544,6 +527,70 @@
     .swiper-pagination-bullet:hover {
       opacity: 0.8;
       transform: scale(1.2);
+    }
+
+    /* Section Envie de collaborer */
+    .section-collaboration{
+      max-width: 1360px;
+      margin: 25px auto 15px auto;
+      border: 2px solid transparent;
+    }
+
+    .collaboration-container{
+      background: #af7a60;
+      border-radius: 24px;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .collaboration-content{
+      z-index: 2;
+    }
+
+    .collaboration-title{
+      font-family: Georgia, serif;
+      font-size: 36px;
+      margin: 0 0 16px 0;
+      color: #4c2b16;
+    }
+
+    .collaboration-text{
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0 0 24px 0;
+      color: #4c2b16;
+    }
+
+    .collaboration-subtitle{
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0 0 24px 0;
+      color: #4c2b16;
+    }
+
+    .btn-contact{
+      background: #E8B46E;
+      color: #3b2f28;
+      font-weight: 700;
+      padding: .7rem 1.2rem;
+      border-radius: 999px;
+      border: none;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .btn-contact:hover{
+      background: transparent;
+      color: #e8b46e;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(232, 180, 110, 0.3);
+      border: 2px solid #e8b46e;
     }
 
     /* Menu burger styles */
@@ -637,12 +684,14 @@
 
       .section-about,
       .section-objectifs,
-      .section-projects {
+      .section-projects,
+      .section-collaboration {
         padding: 0 20px;
       }
 
       .about-grid,
-      .objectifs-grid {
+      .objectifs-grid,
+      .collaboration-container {
         grid-template-columns: 1fr;
         gap: 20px;
       }
@@ -655,7 +704,7 @@
         width: 250px;
       }
 
-      .card {
+      .project-card {
         height: 350px;
       }
 
@@ -688,12 +737,14 @@
 
       .about-text h2,
       .objectifs-text h2,
-      .projects-title {
+      .projects-title,
+      .collaboration-title {
         font-size: 28px;
       }
 
       .about-text p,
-      .objectifs-text p {
+      .objectifs-text p,
+      .collaboration-text {
         font-size: 18px;
       }
     }
@@ -805,7 +856,7 @@
             <div class="swiper-slide">
               <div class="project-card">
                 <div class="card-img">
-                  <img src="./assets/Hailey_Bieber_Rhode_Aesthetics_Espresso.jpeg" alt="Hailey Bieber Rhode Aesthetics">
+                  <img src="assets/Hailey_Bieber_Rhode_Aesthetics_ Espresso.jpeg" alt="Hailey Bieber Rhode Aesthetics">
                 </div>
                 <div class="card-content">
                   <h3>Refonte e-commerce</h3>
@@ -820,7 +871,7 @@
             <div class="swiper-slide">
               <div class="project-card">
                 <div class="card-img">
-                  <img src="./assets/Hailey_Bieber_Rhode_Aesthetics_Espresso.jpeg" alt="Hailey Bieber Rhode Aesthetics">
+                  <img src="assets/Hailey_Bieber_Rhode_Aesthetics_ Espresso.jpeg" alt="Hailey Bieber Rhode Aesthetics">
                 </div>
                 <div class="card-content">
                   <h3>Dashboard analytics</h3>
@@ -835,7 +886,7 @@
             <div class="swiper-slide">
               <div class="project-card">
                 <div class="card-img">
-                  <img src="./assets/Hailey_Bieber_Rhode_Aesthetics_Espresso.jpeg" alt="Hailey Bieber Rhode Aesthetics">
+                  <img src="assets/Hailey_Bieber_Rhode_Aesthetics_ Espresso.jpeg" alt="Hailey Bieber Rhode Aesthetics">
                 </div>
                 <div class="card-content">
                   <h3>Application mobile</h3>
@@ -850,7 +901,7 @@
             <div class="swiper-slide">
               <div class="project-card">
                 <div class="card-img">
-                  <img src="./assets/Hailey_Bieber_Rhode_Aesthetics_Espresso.jpeg" alt="Hailey Bieber Rhode Aesthetics">
+                  <img src="assets/Hailey_Bieber_Rhode_Aesthetics_ Espresso.jpeg" alt="Hailey Bieber Rhode Aesthetics">
                 </div>
                 <div class="card-content">
                   <h3>Site vitrine</h3>
@@ -865,7 +916,7 @@
             <div class="swiper-slide">
               <div class="project-card">
                 <div class="card-img">
-                  <img src="./assets/Hailey_Bieber_Rhode_Aesthetics_Espresso.jpeg" alt="Hailey Bieber Rhode Aesthetics">
+                  <img src="assets/Hailey_Bieber_Rhode_Aesthetics_ Espresso.jpeg" alt="Hailey Bieber Rhode Aesthetics">
                 </div>
                 <div class="card-content">
                   <h3>Plateforme SaaS</h3>
@@ -881,9 +932,26 @@
           <div class="swiper-pagination"></div>
         </div>
 
-        <!-- Flèches en SIBLINGS de .swiper -->
+        <!-- Flèches de navigation -->
         <button class="nav prev" aria-label="Précédent"></button>
         <button class="nav next" aria-label="Suivant"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Envie de collaborer -->
+  <section class="section-collaboration">
+    <div class="collaboration-container">
+      <div class="collaboration-content">
+        <h2 class="collaboration-title">Envie de collaborer ?</h2>
+        <p class="collaboration-text">
+          Vous avez un projet en tête ? Une idée à concrétiser ?
+          Je serais ravie de discuter avec vous et de donner vie à vos ambitions digitales.
+        </p>
+        <p class="collaboration-subtitle">
+          Ensemble, créons quelque chose d'exceptionnel.
+        </p>
+        <button class="btn-contact">Contactez-moi</button>
       </div>
     </div>
   </section>
@@ -898,7 +966,7 @@
       navMobile.classList.toggle('active');
     }
 
-    // Swiper initialization avec nouvelle configuration
+    // Swiper initialization
     const swiper = new Swiper('.myProjects', {
       slidesPerView: 1.1,
       spaceBetween: 28,
