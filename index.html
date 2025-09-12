@@ -58,30 +58,47 @@
     .nav__left, .nav__right{
       display: flex;
       gap: 46px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
 
     .nav__left{
-      justify-content: center;
+      justify-content: flex-start;
     }
 
     .nav__right{
-      justify-content: center;
+      justify-content: flex-end;
+    }
+
+    .nav ul{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 46px;
     }
 
     .nav a{
       font-size: 22px;
       color: var(--ink);
       text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .nav a:hover{
+      color: var(--terra);
     }
 
     .nav a.is-active{
       text-decoration: underline;
       text-underline-offset: 6px;
+      color: var(--terra);
     }
 
     .brand{
       font-family: 'Brittany', cursive;
-      font-size: 64px;
+      font-size: 60px !important;
       font-weight: normal;
       color: var(--ink);
     }
