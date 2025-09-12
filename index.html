@@ -25,7 +25,7 @@
       --aboutH: clamp(320px, 45vh, 540px);
       --container-max: 1360px;
       --container-pad: 70px;
-      --gap: 32px;
+      --gap: 20px;
     }
 
     * { box-sizing: border-box; }
@@ -208,9 +208,12 @@
       background: #E8B46E;
       color: #3b2f28;
       font-weight: 700;
-      padding: .75rem 1.1rem;
+      padding: .5rem .9rem;
       border-radius: 999px;
       text-decoration: none;
+      font-size: 18px;
+      align-self: flex-start;
+      width: auto;
     }
 
     .about-media{
@@ -239,8 +242,8 @@
 
     .objectifs-grid{
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(16px, 0.5vw, 24px);
+      grid-template-columns: 1fr 2fr;
+      gap: var(--gap);
       min-height: 300px;
     }
 
