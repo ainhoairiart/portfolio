@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mes projets – Ainhoa</title>
+
+  <style>
+    @font-face {
+      font-family: 'Brittany';
+      src: url('fonts/Brittany.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    :root{
+      --terra:#AF7B60;
+      --beige:#E7D6B9;
+      --ink:#553B2C;
+      --circle:#A19987;
+      --radius-xl:28px;
+      --aboutH: clamp(320px, 45vh, 540px);
+      --container-max: 1360px;
+      --container-pad: 70px;
+      --gap: 20px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body{
+      margin:0;
+      background:#ffffff;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      color:var(--ink);
+    }
+
+    /* Section 1 - Header + Hero */
+    .shell{
+      max-width: 1360px;
+      margin: 25px auto 15px auto;
+      background: var(--beige);
+      border-radius: var(--radius-xl);
+      padding: 25px 70px;
+      border: 2px solid #fff;
+    }
+
+    .nav{
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+
+    .nav__left, .nav__right{
+      display: flex;
+      gap: 46px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav__left{
+      justify-content: flex-start;
+    }
+
+    .nav__right{
+      justify-content: flex-end;
+    }
+
+    .nav ul{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 46px;
+    }
+
+    .nav a{
+      font-size: 22px;
+      color: var(--ink);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .nav a:hover{
+      color: var(--terra);
+    }
+
+    .nav a.is-active{
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      color: var(--terra);
+    }
+
+    .brand{
+      font-family: 'Brittany', cursive;
+      font-size: 60px !important;
+      font-weight: normal;
+      color: var(--ink);
+    }
+
+    .hero{
+      display: block;
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    .hero__text{
+      max-width: 100%;
+    }
+
+    .hero__name{
+      font-size: 72px;
+      font-weight: 900;
+      color: var(--terra);
+      margin: 0 0 18px 0;
+    }
+
+    .hero__subtitle{
+      font-family: Georgia, serif;
+      font-size: 24px;
+      color: var(--ink);
+      margin: 0 0 30px 0;
+      opacity: 0.8;
+    }
+
+    /* Section Filtres et Recherche */
+    .filters-section{
+      max-width: 1360px;
+      margin: 25px auto 15px auto;
+      border: 2px solid transparent;
+    }
+
+    .filters-container{
+      background: var(--beige);
+      border-radius: 24px;
+      padding: 30px 40px;
+    }
+
+    .search-bar{
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .search-input{
+      width: 100%;
+      padding: 15px 20px 15px 50px;
+      border: 2px solid rgba(175, 123, 96, 0.2);
+      border-radius: 25px;
+      font-size: 16px;
+      background: #fff;
+      color: var(--ink);
+      transition: all 0.3s ease;
+    }
+
+    .search-input:focus{
+      outline: none;
+      border-color: var(--terra);
+      box-shadow: 0 0 0 3px rgba(175, 123, 96, 0.1);
+    }
+
+    .search-icon{
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--terra);
+      font-size: 18px;
+    }
+
+    .filter-buttons{
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .filter-btn{
+      padding: 12px 24px;
+      border: 2px solid var(--terra);
+      background: transparent;
+      color: var(--terra);
+      border-radius: 25px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .filter-btn:hover{
+      background: var(--terra);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .filter-btn.active{
+      background: var(--terra);
+      color: #fff;
+    }
+
+    /* Section Projets */
+    .projects-section{
+      max-width: 1360px;
+      margin: 25px auto 15px auto;
+      border: 2px solid transparent;
+    }
+
+    .projects-container{
+      background: var(--beige);
+      border-radius: 24px;
+      padding: 40px;
+    }
+
+    .projects-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .project-card{
+      background: #af7a60;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(175, 123, 96, 0.2);
+      cursor: pointer;
+      opacity: 1;
+    }
+
+    .project-card:hover{
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(175, 123, 96, 0.25);
+      border-color: var(--terra);
+    }
+
+    .project-card.hidden{
+      display: none;
+    }
+
+    .project-image{
+      height: 220px;
+      background: linear-gradient(135deg, var(--terra) 0%, #8B6A52 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-image img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      opacity: 0.8;
+    }
+
+    .project-card:hover .project-image img{
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    .project-category{
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(232, 180, 110, 0.9);
+      color: #4c2b16;
+      padding: 6px 12px;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .project-content{
+      padding: 24px;
+      background: #af7a60;
+    }
+
+    .project-title{
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+      color: #4c2b16;
+      line-height: 1.3;
+    }
+
+    .project-company{
+      font-size: 16px;
+      margin: 0 0 4px 0;
+      color: #4c2b16;
+      font-weight: 600;
+    }
+
+    .project-role{
+      font-size: 14px;
+      margin: 0 0 15px 0;
+      color: #4c2b16;
+      font-style: italic;
+      opacity: 0.8;
+    }
+
+    .project-description{
+      font-size: 14px;
+      line-height: 1.5;
+      color: #4c2b16;
+      margin: 0 0 20px 0;
+      opacity: 0.9;
+    }
+
+    .project-technologies{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tech-tag{
+      background: rgba(232, 180, 110, 0.3);
+      color: #4c2b16;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .project-actions{
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-project{
+      background: #e8b46e;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      color: #4c2b16;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: 2px solid #e8b46e;
+      flex: 1;
+    }
+
+    .btn-project:hover{
+      background: transparent;
+      color: #e8b46e;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(232, 180, 110, 0.3);
+    }
+
+    .btn-secondary{
+      background: transparent;
+      border: 2px solid #4c2b16;
+      color: #4c2b16;
+    }
+
+    .btn-secondary:hover{
+      background: #4c2b16;
+      color: #af7a60;
+    }
+
+    /* No results message */
+    .no-results{
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--ink);
+      opacity: 0.6;
+      display: none;
+    }
+
+    .no-results.show{
+      display: block;
+    }
+
+    .no-results h3{
+      font-size: 24px;
+      margin: 0 0 10px 0;
+      color: var(--terra);
+    }
+
+    .no-results p{
+      font-size: 16px;
+      margin: 0;
+    }
+
+    /* Section Footer */
+    .section-footer{
+      max-width: 1360px;
+      margin: 25px auto 15px auto;
+      border: 2px solid transparent;
+    }
+
+    .footer-container{
+      background: #a19987;
+      border-radius: 24px;
+      padding: 40px;
+    }
+
+    .footer-content{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .footer-column{
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .footer-brand{
+      font-family: 'Brittany', cursive;
+      font-size: 48px;
+      color: #3b2f28;
+      margin: 0;
+      text-decoration: none;
+    }
+
+    .footer-column h3{
+      font-family: Georgia, serif;
+      font-size: 18px;
+      color: #3b2f28;
+      margin: 0 0 15px 0;
+      font-weight: 600;
+    }
+
+    .footer-nav{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-nav a{
+      color: #3b2f28;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+      opacity: 0.8;
+    }
+
+    .footer-nav a:hover{
+      color: var(--terra);
+      opacity: 1;
+    }
+
+    .social-links{
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .social-link{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #3b2f28;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      opacity: 0.8;
+    }
+
+    .social-link:hover{
+      color: var(--terra);
+      opacity: 1;
+      transform: translateX(5px);
+    }
+
+    .social-icon{
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .legal-links{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .legal-links a{
+      color: #3b2f28;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+      opacity: 0.8;
+    }
+
+    .legal-links a:hover{
+      color: var(--terra);
+      opacity: 1;
+    }
+
+    .footer-bottom{
+      border-top: 1px solid rgba(59, 47, 40, 0.2);
+      padding-top: 20px;
+      margin-top: 30px;
+      text-align: center;
+      font-size: 12px;
+      color: #3b2f28;
+      opacity: 0.6;
+    }
+
+    /* Menu burger styles */
+    .burger-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .burger-line {
+      width: 25px;
+      height: 3px;
+      background-color: var(--ink);
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    .nav-mobile {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--beige);
+      z-index: 1000;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-mobile.active {
+      display: flex;
+    }
+
+    .nav-mobile a {
+      font-size: 24px;
+      color: var(--ink);
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+
+    .nav-mobile a.is-active,
+    .nav-mobile a:hover {
+      background: rgba(175, 123, 96, 0.1);
+      border-color: var(--terra);
+    }
+
+    .close-menu {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 30px;
+      cursor: pointer;
+      color: var(--ink);
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .shell {
+        padding: 20px;
+        margin: 15px;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .burger-menu {
+        display: flex;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1001;
+      }
+
+      .hero {
+        text-align: center;
+      }
+
+      .filters-section,
+      .projects-section {
+        padding: 0 20px;
+      }
+
+      .filters-container,
+      .projects-container {
+        padding: 20px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .filter-buttons {
+        justify-content: center;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+
+      .footer-container {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .brand {
+        font-size: 48px;
+      }
+
+      .hero__name {
+        font-size: 48px;
+      }
+
+      .hero__subtitle {
+        font-size: 18px;
+      }
+
+      .filter-buttons {
+        gap: 10px;
+      }
+
+      .filter-btn {
+        padding: 10px 16px;
+        font-size: 12px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .footer-brand {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Section 1 : Header + Navigation -->
+  <header class="shell">
+    <!-- Menu burger mobile -->
+    <div class="burger-menu" onclick="toggleMenu()">
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+    </div>
+
+    <!-- Navigation mobile -->
+    <nav class="nav-mobile" id="navMobile">
+      <span class="close-menu" onclick="toggleMenu()">&times;</span>
+      <a href="index.html">Accueil</a>
+      <a href="projets.html" class="is-active">Mes projets</a>
+      <a href="index.html#about">À propos</a>
+      <a href="contact.html">Me contacter</a>
+    </nav>
+
+    <!-- Navigation desktop -->
+    <nav class="nav">
+      <ul class="nav__left">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="projets.html" class="is-active">Mes projets</a></li>
+      </ul>
+
+      <a class="brand" href="index.html">Ainhoa</a>
+
+      <ul class="nav__right">
+        <li><a href="index.html#about">À propos</a></li>
+        <li><a href="contact.html">Me contacter</a>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero__text">
+        <h1 class="hero__name">Mes projets</h1>
+        <p class="hero__subtitle">Découvrez mes réalisations en UX/UI design et développement</p>
+      </div>
+    </section>
+  </header>
+
+  <!-- Section Filtres et Recherche -->
+  <section class="filters-section">
+    <div class="filters-container">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" class="search-input" placeholder="Rechercher un projet..." id="searchInput">
+      </div>
+
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Tous</button>
+        <button class="filter-btn" data-filter="ux-design">UX Design</button>
+        <button class="filter-btn" data-filter="developpement">Développement</button>
+        <button class="filter-btn" data-filter="ui-design">UI Design</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="mobile">Mobile</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Projets -->
+  <section class="projects-section">
+    <div class="projects-container">
+      <div class="projects-grid" id="projectsGrid">
+
+        <!-- Projet 1 - UX Design -->
+        <div class="project-card" data-category="ux-design" data-keywords="ux design ecommerce refonte boutique">
+          <div class="project-image">
+            <img src="assets/Hailey_Bieber_Rhode_Aesthetics_Espresso.jpeg" alt="Refonte e-commerce">
+            <div class="project-category">UX Design</div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Refonte e-commerce</h3>
+            <p class="project-company">Maison Terre Cuite</p>
+            <p class="project-role">UX/UI Designer</p>
+            <p class="project-description">Refonte complète de l'expérience utilisateur d'une boutique en ligne spécialisée dans la céramique artisanale.</p>
+            <div class="project-technologies">
+              <span class="tech-tag">Figma</span>
+              <span class="tech-tag">Adobe XD</span>
+              <span class="tech-tag">Prototypage</span>
+              <span class="tech-tag">User Research</span>
+            </div>
+            <div class="project-actions">
+              <button class="btn-project">Voir le projet</button>
+              <button class="btn-project btn-secondary">Prototype</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projet 2 - Développement -->
+        <div class="project-card" data-category="developpement web" data-keywords="dashboard analytics data visualisation">
+          <div class="project-image">
+            <img src="assets/Hailey_Bieber_Rhode_Aesthetics_Espresso.jpeg" alt="Dashboard analytics">
+            <div class="project-category">Développement</div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Dashboard Analytics</h3>
+            <p class="project-company">Akanea Digital</p>
+            <p class="project-role">Frontend Developer</p>
+            <p class="project-description">Développement d'un tableau de bord interactif pour visualiser les données de performance marketing.</p>
+            <div class="project-technologies">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">D3.js</span>
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">Node.js</span>
+            </div>
+            <div class="project-actions">
+              <button class="btn-project">Voir le code</button>
+              <button class="btn-project btn-secondary">Demo live</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projet 3 - Mobile UX -->
+        <div class="project-card" data-category="ux-design mobile" data-keywords="mobile app application startup fintech">
+          <div class="project-image">
+            <img src="assets/Hailey_Bieber_Rhode_Aesthetics_Espresso.jpeg" alt="Application mobile">
+            <div class="project-category">UX Design</div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Application Mobile</h3>
+            <p class="project-company">StartUp TechFlow</p>
+            <p class="project-role">UX Designer</p>
+            <p class="project-description">Conception UX d'une application mobile de gestion financière pour les freelances et entrepreneurs.</p>
+            <div class="project-technologies">
+              <span class="tech-tag">Sketch</span>
+              <span class="tech-tag">InVision</span>
+              <span class="tech-tag">User Testing</span>
+              <span class="tech-tag">Wireframing</span>
+            </div>
+            <div class="project-actions">
+              <button class="btn-project">Voir l'étude</button>
+              <button class="btn-project btn-secondary">Prototype</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projet 4 - Web Development -->
+        <div class="project-card" data-category="developpement web" data-keywords="site vitrine architecture portfolio showcase">
+          <div class="project-image">
+            <img src="assets/Hailey_Bieber_Rhode_Aesthetics_Espresso.jpeg" alt="Site vitrine">
+            <div class="project-category">Développement</div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Site Vitrine</h3>
+            <p class="project-company">Cabinet d'Architecture</p>
+            <p class="project-role">Webdesigner & Developer</p>
+            <p class="project-description">Création d'un site vitrine moderne et responsive pour présenter les réalisations d'un cabinet d'architecture.</p>
+            <div class="project-technologies">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">GSAP</span>
+            </div>
+            <div class="project-actions">
+              <button class="btn-project">Voir le site</button>
+              <button class="btn-project btn-secondary">Code source</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projet 5 - UI Design -->
+        <div class="project-card" data-category="ui-design web" data-keywords="saas plateforme interface design system">
+          <div class="project-image">
+            <img src="assets/Hailey_Bieber_Rhode_Aesthetics_Espresso.jpeg" alt="Plateforme SaaS">
+            <div class="project-category">UI Design</div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Plateforme SaaS</h3>
+            <p class="project-company">Innovation Labs</p>
+            <p class="project-role">Lead Designer</p>
+            <p class="project-description">Conception de l'interface utilisateur d'une plateforme SaaS de gestion de projets collaboratifs.</p>
+            <div class="project-technologies">
+              <span class="tech-tag">Figma</span>
+              <span class="tech-tag">Design System</span>
+              <span class="tech-tag">Component Library</span>
+              <span class="tech-tag">Responsive</span>
+            </div>
+            <div class="project-actions">
+              <button class="btn-project">Voir le design</button>
+              <button class="btn-project btn-secondary">Style guide</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projet 6 - Mobile Dev -->
+        <div class="project-card" data-category="developpement mobile" data-keywords="react native mobile app ecommerce marketplace">
+          <div class="project-image">
+            <img src="assets/Hailey_Bieber_Rhode_Aesthetics_Espresso.jpeg" alt="App E-commerce">
+            <div class="project-category">Développement</div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">App E-commerce</h3>
+            <p class="project-company">MarketPlace Pro</p>
+            <p class="project-role">Mobile Developer</p>
+            <p class="project-description">Développement d'une application mobile de marketplace avec système de paiement intégré.</p>
+            <div class="project-technologies">
+              <span class="tech-tag">React Native</span>
+              <span class="tech-tag">Redux</span>
+              <span class="tech-tag">API REST</span>
+              <span class="tech-tag">Stripe</span>
+            </div>
+            <div class="project-actions">
+              <button class="btn-project">Voir l'app</button>
+              <button class="btn-project btn-secondary">GitHub</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Message aucun résultat -->
+      <div class="no-results" id="noResults">
+        <h3>Aucun projet trouvé</h3>
+        <p>Essayez de modifier vos critères de recherche ou de filtrage.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Footer -->
+  <footer class="section-footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <a href="index.html" class="footer-brand">Ainhoa</a>
+        </div>
+
+        <div class="footer-column">
+          <h3>Liens utiles</h3>
+          <div class="footer-nav">
+            <a href="index.html">Accueil</a>
+            <a href="projets.html">Mes projets</a>
+            <a href="index.html#about">À propos</a>
+            <a href="contact.html">Me contacter</a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h3>Suivez-moi</h3>
+          <div class="social-links">
+            <a href="#" class="social-link" target="_blank">
+              <span class="social-icon">🌐</span>
+              Mon site
+            </a>
+            <a href="#" class="social-link" target="_blank">
+              <span class="social-icon">📱</span>
+              LinkedIn
+            </a>
+            <a href="#" class="social-link" target="_blank">
+              <span class="social-icon">✉️</span>
+              Email
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h3>Informations légales</h3>
+          <div class="legal-links">
+            <a href="#">Mentions légales</a>
+            <a href="#">Politique de confidentialité</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        &copy; 2023 Ainhoa. Tous droits réservés.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Menu burger toggle
+    function toggleMenu() {
+      const navMobile = document.getElementById('navMobile');
+      navMobile.classList.toggle('active');
+    }
+
+    // Variables pour le filtrage et la recherche
+    const searchInput = document.getElementById('searchInput');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    const noResults = document.getElementById('noResults');
+
+    let currentFilter = 'all';
+    let currentSearch = '';
+
+    // Fonction de filtrage
+    function filterProjects() {
+      let visibleCount = 0;
+
+      projectCards.forEach(card => {
+        const category = card.dataset.category;
+        const keywords = card.dataset.keywords.toLowerCase();
+        const title = card.querySelector('.project-title').textContent.toLowerCase();
+        const company = card.querySelector('.project-company').textContent.toLowerCase();
+        const description = card.querySelector('.project-description').textContent.toLowerCase();
+
+        // Check filter
+        const matchesFilter = currentFilter === 'all' || category.includes(currentFilter);
+
+        // Check search
+        const searchText = currentSearch.toLowerCase();
+        const matchesSearch = currentSearch === '' ||
+          keywords.includes(searchText) ||
+          title.includes(searchText) ||
+          company.includes(searchText) ||
+          description.includes(searchText);
+
+        if (matchesFilter && matchesSearch) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      // Afficher/masquer le message "aucun résultat"
+      if (visibleCount === 0) {
+        noResults.classList.add('show');
+      } else {
+        noResults.classList.remove('show');
+      }
+    }
+
+    // Event listeners pour les boutons de filtre
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Retirer la classe active de tous les boutons
+        filterButtons.forEach(b => b.classList.remove('active'));
+
+        // Ajouter la classe active au bouton cliqué
+        btn.classList.add('active');
+
+        // Mettre à jour le filtre actuel
+        currentFilter = btn.dataset.filter;
+
+        // Filtrer les projets
+        filterProjects();
+      });
+    });
+
+    // Event listener pour la recherche
+    searchInput.addEventListener('input', (e) => {
+      currentSearch = e.target.value;
+      filterProjects();
+    });
+
+    // Fonction pour réinitialiser les filtres
+    function resetFilters() {
+      currentFilter = 'all';
+      currentSearch = '';
+      searchInput.value = '';
+
+      filterButtons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.filter === 'all') {
+          btn.classList.add('active');
+        }
+      });
+
+      filterProjects();
+    }
+
+    // Initialiser le filtrage au chargement de la page
+    document.addEventListener('DOMContentLoaded', () => {
+      filterProjects();
+    });
+
+    // Animation d'entrée pour les cartes
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Initialiser le filtrage et l'animation au chargement de la page
+    document.addEventListener('DOMContentLoaded', () => {
+      // D'abord filtrer les projets
+      filterProjects();
+
+      // Ensuite configurer l'animation pour les cartes visibles
+      projectCards.forEach(card => {
+        // Vérifier si la carte est visible après le filtrage
+        if (!card.classList.contains('hidden')) {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(30px)';
+          card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+
+          // Petite temporisation pour permettre au CSS de s'appliquer
+          setTimeout(() => {
+            observer.observe(card);
+          }, 100);
+        }
+      });
+
+      // Forcer l'affichage immédiat si l'observer ne fonctionne pas
+      setTimeout(() => {
+        projectCards.forEach(card => {
+          if (!card.classList.contains('hidden') && card.style.opacity === '0') {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }
+        });
+      }, 500);
+    });
+
+    // Observer toutes les cartes de projet quand elles deviennent visibles
+    function setupCardAnimation() {
+      projectCards.forEach(card => {
+        if (!card.classList.contains('hidden')) {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(30px)';
+          card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          observer.observe(card);
+
+          // Fallback pour s'assurer que les cartes s'affichent
+          setTimeout(() => {
+            if (card.style.opacity === '0') {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }
+          }, 100);
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
