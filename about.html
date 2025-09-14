@@ -589,6 +589,63 @@
       opacity: 0.9;
     }
 
+    /* Styles pour les expériences détaillées */
+    .timeline-experience {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(175, 123, 96, 0.3);
+    }
+
+    .experience-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--terra);
+      margin: 0 0 8px 0;
+    }
+
+    .experience-period {
+      font-size: 14px;
+      color: var(--ink);
+      margin: 0 0 12px 0;
+      opacity: 0.8;
+      font-style: italic;
+    }
+
+    .experience-mission {
+      font-size: 15px;
+      color: var(--ink);
+      line-height: 1.5;
+      margin: 0 0 15px 0;
+      font-weight: 500;
+    }
+
+    .experience-details {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .detail-section {
+      font-size: 14px;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    .detail-section strong {
+      color: var(--terra);
+      font-weight: 600;
+    }
+
+    .detail-section ul {
+      margin: 5px 0 0 20px;
+      padding: 0;
+    }
+
+    .detail-section li {
+      margin: 3px 0;
+      line-height: 1.4;
+    }
+
     /* Responsive */
     @media (max-width: 960px) {
       .section-parcours {
@@ -775,16 +832,32 @@
 
     <div class="timeline">
       <div class="timeline-item">
-        <div class="timeline-date">2025</div>
+        <div class="timeline-date">2022</div>
         <div class="timeline-dot"></div>
         <div class="timeline-content">
-          <h3 class="timeline-title">Certification Google UX Designer (en cours)</h3>
-          <p class="timeline-description">
-            Formation en cours sur Coursera pour obtenir la certification Google UX Designer.
-            Cette formation me permet d'approfondir mes compétences en recherche utilisateur,
-            prototypage et design d'interfaces. Je suis actuellement en recherche d'alternance
-            pour appliquer ces nouvelles compétences en entreprise.
-          </p>
+          <h3 class="timeline-title">DUT Informatique</h3>
+          <p class="timeline-subtitle">IUT A, Toulouse, Rangueil</p>
+          <div class="timeline-experience">
+            <h4 class="experience-title">CNRS – Délégation régionale Occitanie</h4>
+            <p class="experience-period">04/2022 – 07/2022 • Toulouse</p>
+            <p class="experience-mission">Élaboration d'un site web permettant l'aide à la déclinaison locale de la politique de sécurité des systèmes d'information.</p>
+            <div class="experience-details">
+              <div class="detail-section">
+                <strong>Outils :</strong> IDE Visual Studio 2022, phpMyAdmin
+              </div>
+              <div class="detail-section">
+                <strong>Technologies :</strong> C#, HTML, CSS, SQL
+              </div>
+              <div class="detail-section">
+                <strong>Missions :</strong>
+                <ul>
+                  <li>Analyse des besoins et rédaction du cahier des charges</li>
+                  <li>Conception de modèles logiques de données et maquettes</li>
+                  <li>Développement et programmation du site web</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -793,25 +866,39 @@
         <div class="timeline-dot"></div>
         <div class="timeline-content">
           <h3 class="timeline-title">Bachelor Concepteur et Développeur d'Applications</h3>
-          <p class="timeline-description">
-            Formation au CESI Toulouse en alternance chez Akanea. Cette expérience m'a permis
-            de développer une expertise complète en développement d'applications, de la conception
-            à la mise en production. C'est durant cette période que j'ai découvert ma passion
-            pour l'expérience utilisateur et le design d'interfaces.
-          </p>
+          <p class="timeline-subtitle">Cesi, Toulouse</p>
+          <div class="timeline-experience">
+            <h4 class="experience-title">AKANEA</h4>
+            <p class="experience-period">09/2023 – 04/2025 • Blagnac</p>
+            <p class="experience-mission">Participer à la refonte graphique et technologique d'un logiciel de gestion destiné aux professionnels de l'agroalimentaire.</p>
+            <div class="experience-details">
+              <div class="detail-section">
+                <strong>Outils :</strong> OpenEdge Visual Designer
+              </div>
+              <div class="detail-section">
+                <strong>Technologies :</strong> C#, Progress 4GL
+              </div>
+              <div class="detail-section">
+                <strong>Missions :</strong>
+                <ul>
+                  <li>Analyse : évaluation de l'interface utilisateur (UX/UI) et du code existant afin d'identifier les axes d'optimisation fonctionnelle et technique</li>
+                  <li>Conception : réalisation de maquettes fonctionnelles sur papier et élaboration d'une charte graphique cohérente avec les objectifs du projet</li>
+                  <li>Programmation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-date">2022</div>
+        <div class="timeline-date">2025</div>
         <div class="timeline-dot"></div>
         <div class="timeline-content">
-          <h3 class="timeline-title">DUT Informatique</h3>
+          <h3 class="timeline-title">Certification Google UX Designer (en cours)</h3>
+          <p class="timeline-subtitle">OpenClassroom</p>
           <p class="timeline-description">
-            Formation à l'IUT A de Toulouse (Rangueil) qui m'a donné les bases solides en informatique.
-            J'ai effectué un stage enrichissant au Centre National de la Recherche Scientifique
-            (Délégation 14, Toulouse), où j'ai pu découvrir le monde professionnel et affiner
-            mon orientation vers le développement et le design.
+            En recherche d'alternance
           </p>
         </div>
       </div>
