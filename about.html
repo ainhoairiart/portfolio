@@ -687,9 +687,9 @@
       transition: transform 0.6s;
       transform-style: preserve-3d;
       position: relative;
-      min-height: 280px;
-      height: 350px;
-      max-height: 400px;
+      min-height: 300px;
+      height: 380px;
+      max-height: 450px;
       overflow: visible;
     }
 
@@ -700,6 +700,10 @@
 
     .competence-category.is-flipped {
       transform: rotateY(180deg);
+    }
+
+    .competence-category.is-flipped:hover {
+      transform: rotateY(180deg) translateY(-5px);
     }
 
     .competence-category .front,
@@ -716,16 +720,15 @@
       align-items: center;
       padding: 20px;
       box-sizing: border-box;
+      border-radius: 16px;
     }
 
     .competence-category .back {
       transform: rotateY(180deg);
       background: rgba(255, 255, 255, 0.95);
-      border-radius: 16px;
       padding: 20px;
       box-shadow: 0 4px 16px rgba(175, 123, 96, 0.15);
       overflow-y: auto;
-      max-height: 400px;
       justify-content: flex-start;
       align-items: stretch;
     }
@@ -740,16 +743,59 @@
     .competence-category .back li {
       margin-bottom: 15px;
       padding: 10px;
-      background: rgba(175, 123, 96, 0.1);
+      background: rgba(231, 214, 185, 0.8);
       border-radius: 8px;
       font-size: 14px;
       line-height: 1.4;
       color: var(--ink);
-      border-left: 3px solid var(--terra);
+      border-left: 3px solid #e7d6b9;
     }
 
     .competence-category .back li:last-child {
       margin-bottom: 0;
+    }
+
+    /* Couleurs personnalisées pour chaque flip-card */
+    /* Première carte - Conception UX/UI - Couleur #af7a60 */
+    .competence-category:nth-child(1) {
+      background: rgba(175, 122, 96, 0.8) !important;
+      border: 2px solid #af7a60 !important;
+    }
+
+    .competence-category:nth-child(1) .front {
+      background: rgba(175, 122, 96, 0.8);
+    }
+
+    .competence-category:nth-child(1) .back {
+      background: rgba(175, 122, 96, 0.95) !important;
+    }
+
+    /* Deuxième carte - Développement - Couleur #a19987 */
+    .competence-category:nth-child(2) {
+      background: rgba(161, 153, 135, 0.8) !important;
+      border: 2px solid #a19987 !important;
+    }
+
+    .competence-category:nth-child(2) .front {
+      background: rgba(161, 153, 135, 0.8);
+    }
+
+    .competence-category:nth-child(2) .back {
+      background: rgba(161, 153, 135, 0.95) !important;
+    }
+
+    /* Troisième carte - Gestion de projet - Couleur #af7a60 */
+    .competence-category:nth-child(3) {
+      background: rgba(175, 122, 96, 0.8) !important;
+      border: 2px solid #af7a60 !important;
+    }
+
+    .competence-category:nth-child(3) .front {
+      background: rgba(175, 122, 96, 0.8);
+    }
+
+    .competence-category:nth-child(3) .back {
+      background: rgba(175, 122, 96, 0.95) !important;
     }
 
     /* Responsive */

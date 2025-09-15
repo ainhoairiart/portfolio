@@ -635,49 +635,92 @@ body{
   right: 10px !important;
 }
 
-/* Correction pour éviter le débordement du contenu dans les flip-cards */
-.flip-card {
-  background: transparent;
-  width: 350px;
-  height: auto; /* Ajustement automatique de la hauteur */
-  perspective: 1000px; /* effet 3D */
-}
-
-.flip-card-inner {
+/* ===== FLIP CARDS COMPETENCES ===== */
+.competence-category {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 16px rgba(175, 123, 96, 0.15);
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
   position: relative;
+  min-height: 280px;
+  height: 350px;
+  max-height: 400px;
+  overflow: visible;
+}
+.competence-category:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(175, 123, 96, 0.25);
+}
+.competence-category.is-flipped {
+  transform: rotateY(180deg);
+}
+.competence-category .front,
+.competence-category .back {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  min-height: 150px; /* Hauteur minimale pour éviter le débordement */
   backface-visibility: hidden;
-  border-radius: 20px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fefcf9; /* ton fond clair */
-  color: #553B2C;      /* ton brun */
-  font-weight: bold;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
-}
-
-.flip-card-front {
-  font-size: 1.2rem;
-}
-
-.flip-card-back {
-  transform: rotateY(180deg);
-  font-size: 1rem;
   flex-direction: column;
-  overflow-y: auto; /* Empêche le débordement du texte */
-  padding: 18px; /* Améliore le confort de lecture */
-  max-height: 320px; /* Limite la hauteur pour éviter le débordement */
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.competence-category .back {
+  transform: rotateY(180deg);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 16px rgba(175, 123, 96, 0.15);
+  overflow-y: auto;
+  max-height: 400px;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.competence-category .back ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+.competence-category .back li {
+  margin-bottom: 15px;
+  padding: 10px;
+  background: rgba(231, 214, 185, 0.8);
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  border-left: 3px solid #e7d6b9;
+}
+.competence-category .back li:last-child {
+  margin-bottom: 0;
+}
+/* Couleurs personnalisées pour chaque flip-card */
+.competence-category:nth-child(1) {
+  background: rgba(175, 122, 96, 0.8) !important;
+  border: 2px solid #af7a60 !important;
+}
+.competence-category:nth-child(1) .back {
+  background: rgba(175, 122, 96, 0.95) !important;
+}
+.competence-category:nth-child(2) {
+  background: rgba(161, 153, 135, 0.8) !important;
+  border: 2px solid #a19987 !important;
+}
+.competence-category:nth-child(2) .back {
+  background: rgba(161, 153, 135, 0.95) !important;
+}
+.competence-category:nth-child(3) {
+  background: rgba(175, 122, 96, 0.8) !important;
+  border: 2px solid #af7a60 !important;
+}
+.competence-category:nth-child(3) .back {
+  background: rgba(175, 122, 96, 0.95) !important;
 }
 
 /* Responsive */
