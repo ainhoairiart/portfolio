@@ -635,6 +635,51 @@ body{
   right: 10px !important;
 }
 
+/* Correction pour éviter le débordement du contenu dans les flip-cards */
+.flip-card {
+  background: transparent;
+  width: 350px;
+  height: auto; /* Ajustement automatique de la hauteur */
+  perspective: 1000px; /* effet 3D */
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  min-height: 150px; /* Hauteur minimale pour éviter le débordement */
+  backface-visibility: hidden;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fefcf9; /* ton fond clair */
+  color: #553B2C;      /* ton brun */
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.flip-card-front {
+  font-size: 1.2rem;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  font-size: 1rem;
+  flex-direction: column;
+  overflow-y: auto; /* Empêche le débordement du texte */
+  padding: 18px; /* Améliore le confort de lecture */
+  max-height: 320px; /* Limite la hauteur pour éviter le débordement */
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .mes-projets {
