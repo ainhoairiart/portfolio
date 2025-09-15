@@ -492,6 +492,7 @@
       font-size: 40px;
       line-height: 1.2;
       margin: 0 0 50px;
+      text-align: center; /* Titre centré */
     }
 
     .timeline {
@@ -527,13 +528,13 @@
       width: 100px;
       font-size: 18px;
       font-weight: 700;
-      color: var(--terra); /* Couleur mise à jour */
+      color: #AF7A60; /* Couleur spécifiée */
       background: var(--beige);
       padding: 12px 16px;
       border-radius: 25px;
       text-align: center;
       box-shadow: 0 2px 8px rgba(175, 123, 96, 0.3);
-      border: 2px solid var(--terra);
+      border: 2px solid #AF7A60; /* Couleur spécifiée */
     }
 
     .timeline-dot {
@@ -589,14 +590,15 @@
       transform: translateY(-50%);
       width: 24px;
       height: 24px;
-      background: var(--terra);
+      background: #e8b46e; /* Nouveau fond */
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
+      color: #51433b; /* Nouvelle couleur pour la croix */
       font-weight: bold;
       transition: all 0.3s ease;
+      font-size: 16px; /* Taille pour bien centrer la croix */
     }
 
     .timeline-details {
@@ -1071,6 +1073,27 @@
               <p class="timeline-description">
                 Formation spécialisée en recherche utilisateur, design thinking et prototypage.<br>
                 <strong>En recherche d'alternance</strong> pour mettre en pratique ces nouvelles compétences UX/UI.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nouvelle timeline avec bouton déroulant -->
+      <div class="timeline-item">
+        <div class="timeline-date">2026</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <h3 class="timeline-title">Titre à personnaliser</h3>
+            <p class="timeline-subtitle">Sous-titre à personnaliser</p>
+            <div class="timeline-toggle">+</div>
+          </div>
+          <div class="timeline-details">
+            <div class="timeline-details-content">
+              <p class="timeline-description">
+                Contenu à ajouter ici selon vos besoins.<br>
+                <strong>Vous pouvez modifier ce texte</strong> avec les informations souhaitées.
               </p>
             </div>
           </div>
