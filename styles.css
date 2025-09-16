@@ -322,7 +322,7 @@ p {
 }
 
 .objectifs-text {
-  background: var(--brown);
+  background: #A19987;
   color: var(--text);
   padding: clamp(20px, 2.5vw, 40px);
   display: flex;
@@ -996,7 +996,7 @@ p {
 }
 
 .objectifs-text {
-  background: var(--brown);
+  background: #A19987;
   color: var(--text);
   padding: clamp(20px, 2.5vw, 40px);
   display: flex;
