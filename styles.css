@@ -149,50 +149,50 @@ p {
 }
 
 .illust{
-  position: relative;
-  width: 520px;
-  height: 520px;
+  position: relative !important;
+  width: 520px !important;
+  height: 520px !important;
 }
 
 .illust::before{
-  content: "";
-  position: absolute;
-  inset: 40px;
-  border-radius: 50%;
-  background: var(--circle);
-  opacity: .55;
-  z-index: 0;
+  content: "" !important;
+  position: absolute !important;
+  inset: 40px !important;
+  border-radius: 50% !important;
+  background: var(--circle) !important;
+  opacity: .55 !important;
+  z-index: 0 !important;
 }
 
 .char{
-  position: absolute;
-  left: 45px;
-  bottom: 0;
-  width: 325px;
-  border-radius: 24px;
-  z-index: 2;
+  position: absolute !important;
+  left: 45px !important;
+  bottom: 0 !important;
+  width: 325px !important;
+  border-radius: 24px !important;
+  z-index: 2 !important;
 }
 
 .leaf{
-  position: absolute;
-  pointer-events: none;
+  position: absolute !important;
+  pointer-events: none !important;
 }
 
 .leaf-top{
-  position: absolute;
-  width: 65px;
-  top: 35px;
-  left: 300px;
-  transform: rotate(-8deg);
-  z-index: 3;
+  position: absolute !important;
+  width: 65px !important;
+  top: 35px !important;
+  left: 300px !important;
+  transform: rotate(-8deg) !important;
+  z-index: 3 !important;
 }
 
 .leaf-bottom{
-  position: absolute;
-  width: 80px;
-  bottom: 80px;
-  left: 21px;
-  z-index: 1;
+  position: absolute !important;
+  width: 80px !important;
+  bottom: 80px !important;
+  left: 21px !important;
+  z-index: 1 !important;
 }
 
 .kicker{
