@@ -184,6 +184,7 @@ p {
   top: 35px;
   left: 300px;
   transform: rotate(-8deg);
+  z-index: 3;
 }
 
 .leaf-bottom{
