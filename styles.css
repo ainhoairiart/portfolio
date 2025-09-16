@@ -683,6 +683,14 @@ body{
   color: #4c2b16;
 }
 
+.collaboration-title-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 2px;
+  margin-left: 10px;
+}
+
 /* Section Footer */
 .section-footer{
   max-width: 1360px;
