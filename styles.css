@@ -65,7 +65,7 @@ body{
 
 .lead{
   font-family: 'Poppins Regular', sans-serif;
-  font-size: 22px;
+  font-size: 21px;
   line-height: 1.6;
   word-spacing: 3px;
   max-width: 840px;
@@ -74,7 +74,7 @@ body{
 /* Section textes */
 .about-text p{
   font-family: 'Poppins Regular', sans-serif;
-  font-size: 22px;
+  font-size: 21px;
   line-height: 1.8;
   margin: 0 0 18px;
   color: #2e2620;
@@ -82,7 +82,7 @@ body{
 
 .objectifs-text p{
   font-family: 'Poppins Regular', sans-serif;
-  font-size: 22px;
+  font-size: 21px;
   line-height: 1.8;
   margin: 0 0 18px;
   color: #2e2620;
@@ -90,7 +90,7 @@ body{
 
 .collaboration-text{
   font-family: 'Poppins Regular', sans-serif;
-  font-size: 18px;
+  font-size: 21px;
   line-height: 1.6;
   margin: 0 0 24px 0;
   color: #4c2b16;
@@ -98,7 +98,7 @@ body{
 
 .collaboration-subtitle{
   font-family: 'Poppins Regular', sans-serif;
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 700;
   margin: 0 0 24px 0;
   color: #4c2b16;
@@ -173,6 +173,7 @@ body{
   border: none;
   font-size: 18px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 /* Menu mobile */
@@ -375,8 +376,8 @@ body{
 }
 
 .about-title-icon {
-  width: 55px;
-  height: 55px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
   margin-bottom: 2px;
 }
@@ -458,8 +459,8 @@ body{
 }
 
 .objectifs-title-icon {
-  width: 55px;
-  height: 55px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
   margin-bottom: 2px;
 }
@@ -484,6 +485,17 @@ body{
   color: var(--text);
   margin: 0 0 30px 0;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.projects-title-icon {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  margin-bottom: 2px;
 }
 
 .projects {
