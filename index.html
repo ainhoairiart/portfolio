@@ -400,6 +400,17 @@
       margin: 0 0 16px;
       color: #3b2f28;
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .about-title-icon {
+      width: 55px;
+      height: 55px;
+      object-fit: contain;
+      margin-bottom: 2px;
     }
 
     .about-text p{
@@ -479,7 +490,7 @@
     }
 
     .objectifs-text{
-      background: var(--terra);
+      background: #a19987;
       color: #2B1E17;
       padding: clamp(20px, 2.5vw, 40px);
       display: flex;
@@ -494,6 +505,17 @@
       margin: 0 0 16px;
       color: #3b2f28;
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .objectifs-title-icon {
+      width: 55px;
+      height: 55px;
+      object-fit: contain;
+      margin-bottom: 2px;
     }
 
     .objectifs-text p{
@@ -1151,7 +1173,10 @@
   <section class="section-about">
     <div class="about-grid">
       <article class="about-card about-text">
-        <h2>À propos de moi</h2>
+        <h2>
+          À propos de moi
+          <img src="assets/mapple.png" alt="Icône érable" class="about-title-icon">
+        </h2>
         <p>
           Je m'appelle Ainhoa Iriart, diplômée d'un DUT Informatique (IUT Rangueil,
           Toulouse) et d'un Bachelor en Conception et Développement d'Applications
@@ -1177,7 +1202,10 @@
       </figure>
 
       <article class="objectifs-card objectifs-text">
-        <h2>Mes objectifs</h2>
+        <h2>
+          Mes objectifs
+          <img src="assets/mapple.png" alt="Icône érable" class="objectifs-title-icon">
+        </h2>
         <p>
           Valoriser ma double compétence en UX/UI design et en développement afin de concevoir des interfaces à la fois intuitives, efficaces et agréables à utiliser.
         </p>

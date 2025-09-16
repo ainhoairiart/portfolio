@@ -256,6 +256,18 @@ p {
   margin: 0 0 16px;
   color: #3b2f28;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-direction: row-reverse;
+}
+
+.about-title-icon {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  margin-bottom: 2px;
 }
 
 .about-text p {
@@ -322,7 +334,7 @@ p {
 }
 
 .objectifs-text {
-  background: #A19987;
+  background: #a19987;
   color: var(--text);
   padding: clamp(20px, 2.5vw, 40px);
   display: flex;
@@ -929,6 +941,18 @@ p {
   margin: 0 0 16px;
   color: #3b2f28;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-direction: row-reverse;
+}
+
+.about-title-icon {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  margin-bottom: 2px;
 }
 
 .about-text p {
