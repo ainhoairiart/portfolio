@@ -1,3 +1,18 @@
+/* ===== POLICES LOCALES ===== */
+@font-face {
+  font-family: 'Brittany';
+  src: url('fonts/Brittany.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins Regular';
+  src: url('fonts/poppins.regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* ===== VARIABLES CSS GLOBALES ===== */
 :root{
   /* Anciennes variables pour compatibilité */
@@ -14,7 +29,6 @@
   --radius: 24px;
   --aboutH: clamp(300px, 45vh, 540px); /* hauteur minimale augmentée à 300px */
   --brown:#AF7B60;
-  --beige:#E7D6B9;
   --text:#2B1E17;
 }
 
@@ -46,19 +60,31 @@ button { all:unset; cursor:pointer; }
 .section .card > *:last-child{ margin-bottom: 0; }
 
 /* ===== STYLES DE BASE ===== */
-@font-face {
-  font-family: 'Brittany';
-  src: url('fonts/Brittany.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 body{
   margin:0;
   background:#ffffff;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  font-family: 'Poppins Regular', sans-serif;
   color:var(--ink);
   overflow-x: hidden;
+}
+
+/* ===== TYPOGRAPHIE POPPINS REGULAR ===== */
+/* H2 - Poppins Regular 40px */
+h2 {
+  font-family: 'Poppins Regular', sans-serif;
+  font-size: 40px;
+}
+
+/* H3 - Poppins Regular 20px */
+h3 {
+  font-family: 'Poppins Regular', sans-serif;
+  font-size: 20px;
+}
+
+/* P - Poppins Regular 20px */
+p {
+  font-family: 'Poppins Regular', sans-serif;
+  font-size: 20px;
 }
 
 /* ===== SECTION 1 : HEADER + HERO (adaptée au nouveau système) ===== */
@@ -149,7 +175,7 @@ body{
   position: absolute;
   left: 45px;
   bottom: 0;
-  width: 415px;
+  width: 325px;
   border-radius: 24px;
   z-index: 2;
 }
@@ -162,8 +188,7 @@ body{
 .leaf-top{
   width: 65px;
   top: 35px;
-  right: -13px;
-  z-index: 1;
+  left: 300px;
   transform: rotate(-8deg);
 }
 
@@ -175,7 +200,7 @@ body{
 }
 
 .kicker{
-  font-family: Georgia, serif;
+  font-family: 'Poppins Regular', sans-serif;
   font-size: 40px;
   margin: 0 0 12px 0;
 }
@@ -221,9 +246,12 @@ body{
 }
 
 .section-2 .col-text h2 {
-  font-family: Georgia, serif;
-  font-size: clamp(24px, 3vw, 32px);
-  color: var(--text);
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  line-height: 1.2;
+  margin: 0 0 16px;
+  color: #3b2f28;
+  text-align: center;
 }
 
 .section-2 .col-text p {
@@ -249,6 +277,75 @@ body{
   font-weight: 700;
   align-self: flex-start;
   margin-top: auto;
+}
+
+/* ===== STYLES UNIFORMISÉS POUR TOUS LES BOUTONS ===== */
+.about-btn {
+  display: inline-block;
+  background: #E8B46E;
+  color: #3b2f28;
+  font-weight: 700;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 18px;
+  align-self: flex-start;
+  width: auto;
+  padding: 12px 24px;
+  transition: all 0.3s ease;
+}
+
+.about-btn:hover {
+  background: transparent;
+  border: 2px solid #E8B46E;
+  color: #E8B46E;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(232, 180, 110, 0.3);
+}
+
+.card-content .btn-project {
+  display: inline-block;
+  background: #E8B46E;
+  color: #3b2f28;
+  font-weight: 700;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 18px;
+  align-self: flex-start;
+  width: auto;
+  padding: 12px 24px;
+  border: 2px solid #E8B46E;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card-content .btn-project:hover {
+  background: transparent;
+  color: #E8B46E;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(232, 180, 110, 0.3);
+}
+
+.btn-contact {
+  display: inline-block;
+  background: #E8B46E;
+  color: #3b2f28;
+  font-weight: 700;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 18px;
+  align-self: flex-start;
+  width: auto;
+  padding: 12px 24px;
+  border: 2px solid #E8B46E;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-contact:hover {
+  background: transparent;
+  color: #E8B46E;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(232, 180, 110, 0.3);
 }
 
 /* ====== SECTION 3 (Mes objectifs - image à gauche, texte à droite) ====== */
@@ -277,9 +374,12 @@ body{
 }
 
 .section-3 .col-text h2 {
-  font-family: Georgia, serif;
-  font-size: clamp(24px, 3vw, 32px);
-  color: var(--text);
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  line-height: 1.2;
+  margin: 0 0 16px;
+  color: #3b2f28;
+  text-align: center;
 }
 
 .section-3 .col-text p {
@@ -383,12 +483,20 @@ body{
 }
 
 .shell-projects .projects-title {
-  font-family: Georgia, serif;
-  font-size: clamp(24px, 3vw, 32px); /* même taille que les titres des autres sections */
-  color: var(--text); /* même couleur que les titres des autres sections */
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  color: var(--text);
   margin: 0 0 30px 0;
-  text-align: left; /* aligné à gauche comme "À propos de moi" */
+  text-align: center;
 }
+
+/* .shell-projects .projects-title {
+  font-family: 'Poppins Regular', sans-serif;
+  font-size: clamp(24px, 3vw, 32px); /\* même taille que les titres des autres sections *\/
+  color: var(--text); /\* même couleur que les titres des autres sections *\/
+  margin: 0 0 30px 0;
+  text-align: left; /\* aligné à gauche comme "À propos de moi" *\/
+} */
 
 .shell-projects .grid{
   display: block; /* Plus de grille, juste un bloc */
@@ -407,7 +515,7 @@ body{
 
 /* Image pour la section projets - occupe tout l'espace */
 .shell-projects .col-media-projets{
-  background-image: url("assets/projet1.jpg");
+  background-image: url("assets/ainhoa-illustration-tassecafe-objectif.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -431,11 +539,11 @@ body{
 }
 
 .projects-title {
-  font-family: Georgia, serif;
-  font-size: 40px; /* même taille que "À propos de moi" */
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
   color: var(--text);
   margin: 0 0 30px 0;
-  text-align: left; /* aligné à gauche comme les autres titres */
+  text-align: center;
 }
 
 /* Swiper container - RESTAURÉ COMME AVANT */
@@ -514,7 +622,7 @@ body{
 }
 
 .project-content h3 {
-  font-family: Georgia, serif;
+  font-family: 'Poppins Regular', sans-serif;
   font-size: 21px; /* Retour à la taille originale */
   margin: 0 0 12px 0;
   color: #2B1E17;
@@ -635,7 +743,7 @@ body{
   right: 10px !important;
 }
 
-x@/* ===== FLIP CARDS COMPETENCES ===== */
+/* ===== FLIP CARDS COMPETENCES ===== */
 .competence-category {
   background: rgba(255, 255, 255, 0.8);
   border-radius: 16px;

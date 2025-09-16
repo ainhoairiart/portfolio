@@ -16,6 +16,13 @@
       font-style: normal;
     }
 
+    @font-face {
+      font-family: 'Poppins Regular';
+      src: url('fonts/poppins.regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
     :root{
       --terra:#AF7B60;
       --beige:#E7D6B9;
@@ -131,7 +138,7 @@
       position: absolute;
       left: 45px;
       bottom: 0;
-      width: 415px;
+      width: 325px;
       border-radius: 24px;
       z-index: 2;
     }
@@ -156,7 +163,7 @@
     }
 
     .kicker{
-      font-family: Georgia, serif;
+      font-family: 'Poppins', sans-serif;
       font-size: 40px;
       margin: 0 0 12px 0;
     }
@@ -206,11 +213,12 @@
     }
 
     .about-text h2{
-      font-family: Georgia, serif;
+      font-family: 'Poppins Regular', sans-serif;
       font-size: 40px;
       line-height: 1.2;
       margin: 0 0 16px;
       color: #3b2f28;
+      text-align: center;
     }
 
     .about-text p{
@@ -297,11 +305,12 @@
     }
 
     .objectifs-text h2{
-      font-family: Georgia, serif;
+      font-family: 'Poppins Regular', sans-serif;
       font-size: 40px;
       line-height: 1.2;
       margin: 0 0 16px;
       color: #3b2f28;
+      text-align: center;
     }
 
     .objectifs-text p{
@@ -326,12 +335,11 @@
     }
 
     .projects-title{
-      font-family: Georgia, serif;
+      font-family: 'Poppins Regular', sans-serif;
       font-size: 40px;
-      line-height: 1.2;
-      margin: 0 0 40px 0;
-      color: var(--ink);
-      text-align: left;
+      color: var(--text);
+      margin: 0 0 30px 0;
+      text-align: center;
     }
 
     .projects {
@@ -406,10 +414,11 @@
     }
 
     .card-content h3{
-      font-size: 22px;
-      font-weight: 700;
-      margin: 0 0 8px 0;
-      color: #4c2b16;
+      font-family: 'Poppins', sans-serif;
+      font-size: 21px; /* Retour à la taille originale */
+      margin: 0 0 12px 0;
+      color: #2B1E17;
+      font-weight: 600;
       line-height: 1.3;
     }
 
