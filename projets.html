@@ -223,6 +223,7 @@
       color: var(--terra);
       font-size: 20px;
       transition: all 0.3s ease;
+      pointer-events: none;
     }
 
     .search-input:focus + .search-icon {
@@ -230,27 +231,107 @@
       transform: translateY(-50%) scale(1.1);
     }
 
+    /* Bouton de nettoyage de la recherche */
+    .search-clear {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: rgba(175, 123, 96, 0.7);
+      font-size: 18px;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .search-clear.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .search-clear:hover {
+      background: rgba(175, 123, 96, 0.1);
+      color: var(--terra);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    /* Animation de recherche en cours */
+    .search-loading {
+      position: absolute;
+      right: 50px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgba(175, 123, 96, 0.2);
+      border-top: 2px solid var(--terra);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .search-loading.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @keyframes spin {
+      0% { transform: translateY(-50%) rotate(0deg); }
+      100% { transform: translateY(-50%) rotate(360deg); }
+    }
+
     .filter-section {
       margin-top: 25px;
+    }
+
+    .filter-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
     }
 
     .filter-label {
       font-size: 16px;
       font-weight: 600;
       color: var(--ink);
-      margin-bottom: 15px;
-      display: block;
       opacity: 0.9;
+      margin: 0;
     }
 
-    .filter-buttons{
+    .filter-reset {
+      background: none;
+      border: 1px solid rgba(175, 123, 96, 0.3);
+      color: var(--terra);
+      padding: 6px 12px;
+      border-radius: 15px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .filter-reset:hover {
+      background: var(--terra);
+      color: #fff;
+      border-color: var(--terra);
+    }
+
+    .filter-buttons {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
       justify-content: flex-start;
     }
 
-    .filter-btn{
+    .filter-btn {
       padding: 14px 28px;
       border: 2px solid var(--terra);
       background: rgba(255, 255, 255, 0.8);
@@ -281,26 +362,83 @@
       left: 100%;
     }
 
-    .filter-btn:hover{
-      background: var(--terra);
-      color: #fff;
+    .filter-btn:hover {
+      background: #e8b46e;
+      color: #eedec5;
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(175, 123, 96, 0.3);
     }
 
-    .filter-btn.active{
-      background: var(--terra);
-      color: #fff;
+    .filter-btn.active {
+      background: #e8b46e;
+      color: #4c2b16;
       box-shadow: 0 6px 15px rgba(175, 123, 96, 0.4);
       transform: translateY(-2px);
     }
 
-    .projects-count {
+    /* Badge de comptage pour les filtres */
+    .filter-btn .filter-count {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--terra);
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 10px;
+      margin-left: 5px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn.active .filter-count {
+      background: rgba(76, 43, 22, 0.2);
+      color: #4c2b16;
+    }
+
+    /* Compteur de projets amélioré */
+    .projects-count-display {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid rgba(175, 123, 96, 0.2);
+      border-radius: 20px;
+      padding: 15px 20px;
       margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(175, 123, 96, 0.1);
+    }
+
+    .projects-count-display:hover {
+      border-color: var(--terra);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(175, 123, 96, 0.2);
+    }
+
+    .count-number {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--terra);
+      min-width: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    .count-text {
       font-size: 14px;
       color: var(--ink);
-      opacity: 0.7;
-      font-style: italic;
+      opacity: 0.8;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    /* Animations pour le compteur */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes spin {
+      0% { transform: translateY(-50%) rotate(0deg); }
+      100% { transform: translateY(-50%) rotate(360deg); }
     }
 
     /* Section Projets */
@@ -923,7 +1061,7 @@
 
       <ul class="nav__right">
         <li><a href="index.html#about">À propos</a></li>
-        <li><a href="contact.html">Me contacter</a>
+        <li><a href="contact.html">Me contacter</a></li>
       </ul>
     </nav>
 
@@ -946,23 +1084,30 @@
           Découvrez mes réalisations créatives alliant expertise UX/UI et développement technique. Chaque projet reflète ma passion pour l'innovation digitale et l'expérience utilisateur.
         </p>
         <div class="search-and-filters">
-        <div class="search-bar">
-          <span class="search-icon">🔍</span>
-          <input type="text" class="search-input" placeholder="Rechercher un projet..." id="searchInput">
-        </div>
+          <div class="search-bar">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" placeholder="Rechercher un projet..." id="searchInput">
+            <button class="search-clear" id="searchClear" aria-label="Effacer la recherche">✕</button>
+            <div class="search-loading" id="searchLoading"></div>
+          </div>
 
-        <div class="filter-section">
-          <span class="filter-label">Filtres :</span>
-          <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">Tous</button>
-            <button class="filter-btn" data-filter="ux-design">UX Design</button>
-            <button class="filter-btn" data-filter="developpement">Développement</button>
-            <button class="filter-btn" data-filter="ui-design">UI Design</button>
-            <button class="filter-btn" data-filter="web">Web</button>
-            <button class="filter-btn" data-filter="mobile">Mobile</button>
+          <div class="filter-section">
+            <div class="filter-header">
+              <span class="filter-label">Filtres :</span>
+              <button class="filter-reset" id="filterReset">Réinitialiser</button>
+            </div>
+            <div class="filter-buttons">
+              <button class="filter-btn active" data-filter="all">Tous <span class="filter-count">6</span></button>
+              <button class="filter-btn" data-filter="ux-design">UX Design <span class="filter-count">2</span></button>
+              <button class="filter-btn" data-filter="developpement">Développement <span class="filter-count">3</span></button>
+              <button class="filter-btn" data-filter="ui-design">UI Design <span class="filter-count">1</span></button>
+              <button class="filter-btn" data-filter="web">Web <span class="filter-count">3</span></button>
+              <button class="filter-btn" data-filter="mobile">Mobile <span class="filter-count">2</span></button>
+            </div>
           </div>
         </div>
-      </div>
+
+
       </article>
 
       <figure class="about-card about-media">
@@ -973,7 +1118,14 @@
 
   <!-- Section Projets -->
   <section class="projects-section">
+
     <div class="projects-container">
+      <!-- Compteur de projets -->
+      <div class="projects-count-display" id="projectsCount">
+        <span class="count-number">6</span>
+        <span class="count-text">projets trouvés</span>
+      </div>
+
       <div class="projects-grid" id="projectsGrid">
 
         <!-- Projet 1 - UX Design -->
@@ -1194,13 +1346,56 @@
     const projectCards = document.querySelectorAll('.project-card');
     const noResults = document.getElementById('noResults');
     const projectsCount = document.getElementById('projectsCount');
+    const searchClear = document.getElementById('searchClear');
+    const searchLoading = document.getElementById('searchLoading');
+    const filterReset = document.getElementById('filterReset');
 
     let currentFilter = 'all';
     let currentSearch = '';
+    let searchTimeout;
 
-    // Fonction de filtrage
+    // Fonction pour mettre à jour les compteurs de filtres
+    function updateFilterCounts() {
+      const filterCounts = {
+        'all': 0,
+        'ux-design': 0,
+        'developpement': 0,
+        'ui-design': 0,
+        'web': 0,
+        'mobile': 0
+      };
+
+      // Compter les projets par catégorie
+      projectCards.forEach(card => {
+        const category = card.dataset.category;
+        filterCounts['all']++;
+
+        // Compter pour chaque filtre spécifique
+        if (category.includes('ux-design')) filterCounts['ux-design']++;
+        if (category.includes('developpement')) filterCounts['developpement']++;
+        if (category.includes('ui-design')) filterCounts['ui-design']++;
+        if (category.includes('web')) filterCounts['web']++;
+        if (category.includes('mobile')) filterCounts['mobile']++;
+      });
+
+      // Mettre à jour l'affichage des compteurs
+      filterButtons.forEach(btn => {
+        const filter = btn.dataset.filter;
+        const countElement = btn.querySelector('.filter-count');
+        if (countElement) {
+          countElement.textContent = filterCounts[filter] || 0;
+        }
+      });
+    }
+
+    // Fonction de filtrage améliorée
     function filterProjects() {
       let visibleCount = 0;
+
+      // Afficher l'indicateur de chargement
+      if (searchLoading) {
+        searchLoading.classList.add('show');
+      }
 
       projectCards.forEach(card => {
         const category = card.dataset.category;
@@ -1223,25 +1418,88 @@
         if (matchesFilter && matchesSearch) {
           card.classList.remove('hidden');
           visibleCount++;
+          // Animation d'apparition
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 50);
         } else {
           card.classList.add('hidden');
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
         }
       });
 
-      // Afficher/masquer le message "aucun résultat"
-      if (visibleCount === 0) {
-        noResults.classList.add('show');
-      } else {
-        noResults.classList.remove('show');
-      }
+      // Masquer l'indicateur de chargement
+      setTimeout(() => {
+        if (searchLoading) {
+          searchLoading.classList.remove('show');
+        }
+      }, 300);
 
-      // Mettre à jour le compteur de projets
-      projectsCount.textContent = `${visibleCount} projet${visibleCount !== 1 ? 's' : ''} trouvé${visibleCount !== 1 ? 's' : ''}`;
+      // Afficher/masquer le message "aucun résultat"
+      setTimeout(() => {
+        if (visibleCount === 0) {
+          noResults.classList.add('show');
+        } else {
+          noResults.classList.remove('show');
+        }
+      }, 300);
+
+      // Mettre à jour le compteur de projets avec animation
+      updateProjectsCounter(visibleCount);
+
+      // Gérer l'affichage du bouton de nettoyage
+      toggleClearButton();
     }
 
-    // Event listeners pour les boutons de filtre
+    // Fonction pour mettre à jour le compteur avec animation améliorée
+    function updateProjectsCounter(count) {
+      const countNumber = projectsCount.querySelector('.count-number');
+      const countText = projectsCount.querySelector('.count-text');
+
+      // Animation du nombre avec effet de rebond
+      countNumber.style.transform = 'scale(1.3)';
+      countNumber.style.color = '#E8B46E';
+
+      setTimeout(() => {
+        countNumber.textContent = count;
+        countNumber.style.transform = 'scale(1)';
+        countNumber.style.color = 'var(--terra)';
+      }, 200);
+
+      // Mise à jour du texte avec délai
+      setTimeout(() => {
+        countText.textContent = `projet${count !== 1 ? 's' : ''} trouvé${count !== 1 ? 's' : ''}`;
+      }, 200);
+
+      // Animation de pulsation pour attirer l'attention
+      projectsCount.style.animation = 'pulse 0.8s ease-in-out';
+      setTimeout(() => {
+        projectsCount.style.animation = '';
+      }, 800);
+    }
+
+    // Fonction pour gérer l'affichage du bouton de nettoyage
+    function toggleClearButton() {
+      if (searchClear) {
+        if (currentSearch.length > 0) {
+          searchClear.classList.add('show');
+        } else {
+          searchClear.classList.remove('show');
+        }
+      }
+    }
+
+    // Event listeners pour les boutons de filtre avec animation
     filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
+        // Animation du bouton cliqué
+        btn.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          btn.style.transform = '';
+        }, 150);
+
         // Retirer la classe active de tous les boutons
         filterButtons.forEach(b => b.classList.remove('active'));
 
@@ -1251,39 +1509,128 @@
         // Mettre à jour le filtre actuel
         currentFilter = btn.dataset.filter;
 
-        // Filtrer les projets
-        filterProjects();
+        // Filtrer les projets avec délai pour l'animation
+        setTimeout(() => {
+          filterProjects();
+        }, 100);
       });
     });
 
-    // Event listener pour la recherche
-    searchInput.addEventListener('input', (e) => {
-      currentSearch = e.target.value;
-      filterProjects();
-    });
+    // Event listener pour la recherche avec debounce
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        currentSearch = e.target.value;
 
-    // Fonction pour réinitialiser les filtres
+        // Annuler le timeout précédent
+        clearTimeout(searchTimeout);
+
+        // Délai pour éviter trop de requêtes
+        searchTimeout = setTimeout(() => {
+          filterProjects();
+        }, 300);
+      });
+    }
+
+    // Event listener pour le bouton de nettoyage avec animation
+    if (searchClear) {
+      searchClear.addEventListener('click', () => {
+        // Animation du bouton
+        searchClear.style.transform = 'scale(1.2)';
+        setTimeout(() => {
+          searchClear.style.transform = '';
+        }, 150);
+
+        // Réinitialiser le champ de recherche
+        searchInput.value = '';
+        currentSearch = '';
+
+        // Filtrer les projets à nouveau
+        filterProjects();
+
+        // Focus sur le champ de recherche
+        searchInput.focus();
+      });
+    }
+
+    // Event listener pour le bouton de réinitialisation
+    if (filterReset) {
+      filterReset.addEventListener('click', () => {
+        // Animation du bouton
+        filterReset.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+          filterReset.style.transform = '';
+        }, 150);
+
+        // Réinitialiser tous les filtres
+        resetFilters();
+      });
+    }
+
+    // Fonction pour réinitialiser les filtres avec animation
     function resetFilters() {
       currentFilter = 'all';
       currentSearch = '';
-      searchInput.value = '';
+      if (searchInput) {
+        searchInput.value = '';
+      }
 
-      filterButtons.forEach(btn => {
+      // Animation des boutons
+      filterButtons.forEach((btn, index) => {
         btn.classList.remove('active');
         if (btn.dataset.filter === 'all') {
-          btn.classList.add('active');
+          setTimeout(() => {
+            btn.classList.add('active');
+          }, index * 100);
         }
       });
 
-      filterProjects();
+      // Filtrer avec délai pour l'animation
+      setTimeout(() => {
+        filterProjects();
+      }, 200);
     }
 
-    // Initialiser le filtrage au chargement de la page
+    // Event listener pour les touches du clavier sur la recherche
+    if (searchInput) {
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          // Effacer la recherche avec Échap
+          searchInput.value = '';
+          currentSearch = '';
+          filterProjects();
+        } else if (e.key === 'Enter') {
+          // Empêcher le comportement par défaut d'Enter
+          e.preventDefault();
+          filterProjects();
+        }
+      });
+    }
+
+    // Initialiser au chargement de la page
     document.addEventListener('DOMContentLoaded', () => {
+      // Mettre à jour les compteurs de filtres
+      updateFilterCounts();
+
+      // Filtrer les projets
       filterProjects();
+
+      // Configuration de l'animation d'entrée pour les cartes
+      projectCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+
+        // Animation échelonnée
+        setTimeout(() => {
+          if (!card.classList.contains('hidden')) {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }
+        }, index * 100);
+      });
     });
 
-    // Animation d'entrée pour les cartes
+    // Observer pour les animations lors du scroll
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
@@ -1291,64 +1638,32 @@
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !entry.target.classList.contains('hidden')) {
           entry.target.style.opacity = '1';
           entry.target.style.transform = 'translateY(0)';
         }
       });
     }, observerOptions);
 
-    // Initialiser le filtrage et l'animation au chargement de la page
-    document.addEventListener('DOMContentLoaded', () => {
-      // D'abord filtrer les projets
-      filterProjects();
-
-      // Ensuite configurer l'animation pour les cartes visibles
-      projectCards.forEach(card => {
-        // Vérifier si la carte est visible après le filtrage
-        if (!card.classList.contains('hidden')) {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(30px)';
-          card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-
-          // Petite temporisation pour permettre au CSS de s'appliquer
-          setTimeout(() => {
-            observer.observe(card);
-          }, 100);
-        }
-      });
-
-      // Forcer l'affichage immédiat si l'observer ne fonctionne pas
-      setTimeout(() => {
-        projectCards.forEach(card => {
-          if (!card.classList.contains('hidden') && card.style.opacity === '0') {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          }
-        });
-      }, 500);
+    // Observer toutes les cartes de projet
+    projectCards.forEach(card => {
+      observer.observe(card);
     });
 
-    // Observer toutes les cartes de projet quand elles deviennent visibles
-    function setupCardAnimation() {
-      projectCards.forEach(card => {
-        if (!card.classList.contains('hidden')) {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(30px)';
-          card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-          observer.observe(card);
+    // Animation du logo au chargement
+    document.addEventListener('DOMContentLoaded', () => {
+      const brand = document.querySelector('.brand');
+      if (brand) {
+        brand.style.transform = 'scale(0.8)';
+        brand.style.opacity = '0.7';
 
-          // Fallback pour s'assurer que les cartes s'affichent
-          setTimeout(() => {
-            if (card.style.opacity === '0') {
-              card.style.opacity = '1';
-              card.style.transform = 'translateY(0)';
-            }
-          }, 100);
-        }
-      });
-    }
+        setTimeout(() => {
+          brand.style.transform = 'scale(1)';
+          brand.style.opacity = '1';
+          brand.style.transition = 'all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        }, 500);
+      }
+    });
   </script>
-
 </body>
 </html>
