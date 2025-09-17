@@ -1225,11 +1225,8 @@
     function updateFilterCounts() {
       const filterCounts = {
         'all': 0,
-        'ux-design': 0,
-        'developpement': 0,
-        'ui-design': 0,
-        'web': 0,
-        'mobile': 0
+        'UX/UI Designer': 0,
+        'developpement': 0
       };
 
       // Compter les projets par catégorie
@@ -1238,11 +1235,8 @@
         filterCounts['all']++;
 
         // Compter pour chaque filtre spécifique
-        if (category.includes('ux-design')) filterCounts['ux-design']++;
+        if (category.includes('UX/UI Designer')) filterCounts['UX/UI Designer']++;
         if (category.includes('developpement')) filterCounts['developpement']++;
-        if (category.includes('ui-design')) filterCounts['ui-design']++;
-        if (category.includes('web')) filterCounts['web']++;
-        if (category.includes('mobile')) filterCounts['mobile']++;
       });
 
       // Mettre à jour l'affichage des compteurs
