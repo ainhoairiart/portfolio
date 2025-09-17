@@ -334,7 +334,7 @@
     .filter-btn {
       padding: 14px 28px;
       border: 2px solid var(--terra);
-      background: rgba(255, 255, 255, 0.8);
+      background: #eedec5;
       color: var(--terra);
       border-radius: 30px;
       font-size: 14px;
@@ -393,40 +393,42 @@
       color: #4c2b16;
     }
 
-    /* Compteur de projets amélioré */
+    /* Compteur de projets amélioré - Style minimaliste automnal */
     .projects-count-display {
-      background: rgba(255, 255, 255, 0.9);
-      border: 2px solid rgba(175, 123, 96, 0.2);
-      border-radius: 20px;
-      padding: 15px 20px;
+      background: transparent;
+      border: none;
+      border-left: 3px solid var(--terra);
+      border-radius: 0;
+      padding: 12px 16px;
       margin-top: 20px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       transition: all 0.3s ease;
-      box-shadow: 0 2px 8px rgba(175, 123, 96, 0.1);
     }
 
     .projects-count-display:hover {
-      border-color: var(--terra);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(175, 123, 96, 0.2);
+      border-left-color: #e8b46e;
+      transform: none;
+      box-shadow: none;
+      padding-left: 20px;
     }
 
     .count-number {
-      font-size: 24px;
-      font-weight: 700;
+      font-size: 18px;
+      font-weight: 600;
       color: var(--terra);
-      min-width: 30px;
-      transition: transform 0.3s ease;
+      min-width: auto;
+      transition: color 0.3s ease;
     }
 
     .count-text {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--ink);
-      opacity: 0.8;
-      font-weight: 500;
+      opacity: 0.7;
+      font-weight: 400;
       transition: all 0.3s ease;
+      text-transform: lowercase;
     }
 
     /* Animations pour le compteur */
@@ -1130,145 +1132,79 @@
 
         <!-- Projet 1 - UX Design -->
         <div class="project-card" data-category="ux-design" data-keywords="ux design ecommerce refonte boutique">
-          <div class="project-image">
+          <div class="card-img">
             <img src="assets/Hailey_Bieber_Rhode_Aesthetics_Espresso.jpeg" alt="Refonte e-commerce">
-            <div class="project-category">UX Design</div>
           </div>
-          <div class="project-content">
-            <h3 class="project-title">Refonte e-commerce</h3>
-            <p class="project-company">Maison Terre Cuite</p>
-            <p class="project-role">UX/UI Designer</p>
-            <p class="project-description">Refonte complète de l'expérience utilisateur d'une boutique en ligne spécialisée dans la céramique artisanale.</p>
-            <div class="project-technologies">
-              <span class="tech-tag">Figma</span>
-              <span class="tech-tag">Adobe XD</span>
-              <span class="tech-tag">Prototypage</span>
-              <span class="tech-tag">User Research</span>
-            </div>
-            <div class="project-actions">
-              <button class="btn-project">Voir le projet</button>
-              <button class="btn-project btn-secondary">Prototype</button>
-            </div>
+          <div class="card-content">
+            <h3>Refonte e-commerce</h3>
+            <p class="company">Maison Terre Cuite</p>
+            <p class="role">UX/UI Designer</p>
+            <button class="btn-project">Voir le projet</button>
           </div>
         </div>
 
         <!-- Projet 2 - Développement -->
         <div class="project-card" data-category="developpement web" data-keywords="dashboard analytics data visualisation">
-          <div class="project-image">
+          <div class="card-img">
             <img src="assets/Hailey_Bieber_Rhode_Aesthetics_Espresso.jpeg" alt="Dashboard analytics">
-            <div class="project-category">Développement</div>
           </div>
-          <div class="project-content">
-            <h3 class="project-title">Dashboard Analytics</h3>
-            <p class="project-company">Akanea Digital</p>
-            <p class="project-role">Frontend Developer</p>
-            <p class="project-description">Développement d'un tableau de bord interactif pour visualiser les données de performance marketing.</p>
-            <div class="project-technologies">
-              <span class="tech-tag">React</span>
-              <span class="tech-tag">D3.js</span>
-              <span class="tech-tag">TypeScript</span>
-              <span class="tech-tag">Node.js</span>
-            </div>
-            <div class="project-actions">
-              <button class="btn-project">Voir le code</button>
-              <button class="btn-project btn-secondary">Demo live</button>
-            </div>
+          <div class="card-content">
+            <h3>Dashboard Analytics</h3>
+            <p class="company">Akanea Digital</p>
+            <p class="role">Frontend Developer</p>
+            <button class="btn-project">Voir le code</button>
           </div>
         </div>
 
         <!-- Projet 3 - Mobile UX -->
         <div class="project-card" data-category="ux-design mobile" data-keywords="mobile app application startup fintech">
-          <div class="project-image">
+          <div class="card-img">
             <img src="assets/Hailey_Bieber_Rhode_Aesthetics_Espresso.jpeg" alt="Application mobile">
-            <div class="project-category">UX Design</div>
           </div>
-          <div class="project-content">
-            <h3 class="project-title">Application Mobile</h3>
-            <p class="project-company">StartUp TechFlow</p>
-            <p class="project-role">UX Designer</p>
-            <p class="project-description">Conception UX d'une application mobile de gestion financière pour les freelances et entrepreneurs.</p>
-            <div class="project-technologies">
-              <span class="tech-tag">Sketch</span>
-              <span class="tech-tag">InVision</span>
-              <span class="tech-tag">User Testing</span>
-              <span class="tech-tag">Wireframing</span>
-            </div>
-            <div class="project-actions">
-              <button class="btn-project">Voir l'étude</button>
-              <button class="btn-project btn-secondary">Prototype</button>
-            </div>
+          <div class="card-content">
+            <h3>Application Mobile</h3>
+            <p class="company">StartUp TechFlow</p>
+            <p class="role">UX Designer</p>
+            <button class="btn-project">Voir l'étude</button>
           </div>
         </div>
 
         <!-- Projet 4 - Web Development -->
         <div class="project-card" data-category="developpement web" data-keywords="site vitrine architecture portfolio showcase">
-          <div class="project-image">
+          <div class="card-img">
             <img src="assets/Hailey_Bieber_Rhode_Aesthetics_Espresso.jpeg" alt="Site vitrine">
-            <div class="project-category">Développement</div>
           </div>
-          <div class="project-content">
-            <h3 class="project-title">Site Vitrine</h3>
-            <p class="project-company">Cabinet d'Architecture</p>
-            <p class="project-role">Webdesigner & Developer</p>
-            <p class="project-description">Création d'un site vitrine moderne et responsive pour présenter les réalisations d'un cabinet d'architecture.</p>
-            <div class="project-technologies">
-              <span class="tech-tag">HTML5</span>
-              <span class="tech-tag">CSS3</span>
-              <span class="tech-tag">JavaScript</span>
-              <span class="tech-tag">GSAP</span>
-            </div>
-            <div class="project-actions">
-              <button class="btn-project">Voir le site</button>
-              <button class="btn-project btn-secondary">Code source</button>
-            </div>
+          <div class="card-content">
+            <h3>Site Vitrine</h3>
+            <p class="company">Cabinet d'Architecture</p>
+            <p class="role">Webdesigner & Developer</p>
+            <button class="btn-project">Voir le site</button>
           </div>
         </div>
 
         <!-- Projet 5 - UI Design -->
         <div class="project-card" data-category="ui-design web" data-keywords="saas plateforme interface design system">
-          <div class="project-image">
+          <div class="card-img">
             <img src="assets/Hailey_Bieber_Rhode_Aesthetics_Espresso.jpeg" alt="Plateforme SaaS">
-            <div class="project-category">UI Design</div>
           </div>
-          <div class="project-content">
-            <h3 class="project-title">Plateforme SaaS</h3>
-            <p class="project-company">Innovation Labs</p>
-            <p class="project-role">Lead Designer</p>
-            <p class="project-description">Conception de l'interface utilisateur d'une plateforme SaaS de gestion de projets collaboratifs.</p>
-            <div class="project-technologies">
-              <span class="tech-tag">Figma</span>
-              <span class="tech-tag">Design System</span>
-              <span class="tech-tag">Component Library</span>
-              <span class="tech-tag">Responsive</span>
-            </div>
-            <div class="project-actions">
-              <button class="btn-project">Voir le design</button>
-              <button class="btn-project btn-secondary">Style guide</button>
-            </div>
+          <div class="card-content">
+            <h3>Plateforme SaaS</h3>
+            <p class="company">Innovation Labs</p>
+            <p class="role">Lead Designer</p>
+            <button class="btn-project">Voir le design</button>
           </div>
         </div>
 
         <!-- Projet 6 - Mobile Dev -->
         <div class="project-card" data-category="developpement mobile" data-keywords="react native mobile app ecommerce marketplace">
-          <div class="project-image">
+          <div class="card-img">
             <img src="assets/Hailey_Bieber_Rhode_Aesthetics_Espresso.jpeg" alt="App E-commerce">
-            <div class="project-category">Développement</div>
           </div>
-          <div class="project-content">
-            <h3 class="project-title">App E-commerce</h3>
-            <p class="project-company">MarketPlace Pro</p>
-            <p class="project-role">Mobile Developer</p>
-            <p class="project-description">Développement d'une application mobile de marketplace avec système de paiement intégré.</p>
-            <div class="project-technologies">
-              <span class="tech-tag">React Native</span>
-              <span class="tech-tag">Redux</span>
-              <span class="tech-tag">API REST</span>
-              <span class="tech-tag">Stripe</span>
-            </div>
-            <div class="project-actions">
-              <button class="btn-project">Voir l'app</button>
-              <button class="btn-project btn-secondary">GitHub</button>
-            </div>
+          <div class="card-content">
+            <h3>App E-commerce</h3>
+            <p class="company">MarketPlace Pro</p>
+            <p class="role">Mobile Developer</p>
+            <button class="btn-project">Voir l'app</button>
           </div>
         </div>
 
