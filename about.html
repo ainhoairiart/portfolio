@@ -299,6 +299,17 @@
     .autumn-icon {
       font-size: 20px;
     }
+    /* Section Mes hobbies */
+    .section-hobbies {
+      max-width: 1360px;
+      margin: 25px auto;
+      padding: 40px 70px;
+      border: 2px solid transparent;
+      border-radius: var(--radius-xl);
+      background: var(--beige);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+
 
     /* Section Footer */
     .section-footer{
@@ -899,51 +910,6 @@
       }
     }
 
-    /* Section Mes Hobbies */
-    .section-hobbies {
-      max-width: 1360px;
-      margin: 25px auto;
-      padding: 40px 70px;
-      border: 2px solid transparent;
-      border-radius: var(--radius-xl);
-      background: url('assets/background-carreaux.jpg') center/cover;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-      position: relative;
-    }
-
-    .section-hobbies::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(161, 153, 135, 0.7);
-      border-radius: var(--radius-xl);
-      z-index: 1;
-    }
-
-    .hobbies-title {
-      font-family: 'Poppins Regular', sans-serif;
-      font-size: 36px;
-      line-height: 1.2;
-      margin: 0;
-      text-align: center;
-      color: #3b2f28;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hobbies-title-icon {
-      width: 30px;
-      height: 30px;
-      object-fit: contain;
-    }
-
     /* Section Footer */
   </style>
 </head>
@@ -1014,22 +980,15 @@
       <article class="about-card about-text">
         <h2>Qui je suis ?</h2>
 
-        <p class="intro-name">Aïnhoa IRIART</p>
+        <p class="intro-name">Je m’appelle Ainhoa Iriart.</p>
 
         <p>
-          Je viens du développement, mais ce qui m'a toujours passionnée, c'est la conception : jouer avec les couleurs, choisir des typographies, imaginer des interfaces.
-        </p>
+          Issue du développement, j’ai toujours été guidée par une passion pour la conception : jouer avec les couleurs, harmoniser les typographies et imaginer des interfaces intuitives.
+Ce goût pour l’esthétique et l’expérience utilisateur m’a naturellement conduite vers l’UX/UI Design.
 
-        <p class="highlight-text">
-          C'est ce goût pour l'esthétique et la création qui m'a naturellement menée vers l'UX/UI Design.
         </p>
-
         <p>
-          Amoureuse de l'automne et de ses couleurs chaudes, j'en ai fait le fil conducteur de mon univers visuel. À travers mon site, je souhaite transmettre cette ambiance douce, chaleureuse et naturelle, reflet de ma sensibilité et de mon regard créatif.
-        </p>
-
-        <p>
-          <strong>Rigoureuse, curieuse et créative</strong>, j'accorde une grande importance aux détails et à l'expérience globale.
+          Rigoureuse, curieuse et créative, je porte une attention particulière aux détails tout en gardant une vision globale de l’expérience.
         </p>
       </article>
     </div>
@@ -1203,16 +1162,11 @@
     </div>
   </section>
 
-  <!-- Section Mes Hobbies -->
+  <!-- Section Footer Dupliquée (sans textes) -->
   <section class="section-hobbies">
-    <div class="hobbies-container">
-      <div class="hobbies-header">
-        <h2 class="hobbies-title">
-          Mes Hobbies
-          <img src="assets/mapple-rose.png" alt="Icône érable rose" class="hobbies-title-icon">
-        </h2>
-      </div>
+    <div class="hobbies-container" style="position: relative; min-height: 120px;">
     </div>
+
   </section>
 
   <!-- Section Footer -->
