@@ -912,6 +912,7 @@
 
     /* Section Footer */
   </style>
+  <link rel="stylesheet" href="css/book.css">
 </head>
 <body>
 
@@ -1162,12 +1163,64 @@ Ce goût pour l’esthétique et l’expérience utilisateur m’a naturellement
     </div>
   </section>
 
-  <!-- Section Footer Dupliquée (sans textes) -->
+  <!-- Section Hobbies -->
   <section class="section-hobbies">
-    <div class="hobbies-container" style="position: relative; min-height: 120px;">
-    </div>
+    <h2 class="hobbies-title">Mes Hobbies</h2>
+    <div class="hobbies-container">
+        <div class="book-container">
+            <div class="book" id="book">
+                <!-- Page de couverture -->
+                <div class="page cover">
+                    <div class="page-content">
+                        <h2>Mon Journal Créatif</h2>
+                        <img src="assets/livre_octobre.jpeg" alt="Couverture du livre" class="cover-image">
+                    </div>
+                </div>
 
-  </section>
+                <!-- Sommaire -->
+                <div class="page">
+                    <div class="page-content">
+                        <h2>Sommaire</h2>
+                        <ul class="table-contents">
+                            <li>Mes inspirations</li>
+                            <li>Mes créations</li>
+                            <li>Mes projets</li>
+                            <li>Notes personnelles</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pages vides stylisées -->
+                <div class="page">
+                    <div class="page-content">
+                        <p style="font-style: italic; color: #999;">Page de notes...</p>
+                    </div>
+                </div>
+                <div class="page">
+                    <div class="page-content">
+                        <p style="font-style: italic; color: #999;">Espace pour dessiner...</p>
+                    </div>
+                </div>
+                <div class="page">
+                    <div class="page-content">
+                        <p style="font-style: italic; color: #999;">Idées futures...</p>
+                    </div>
+                </div>
+
+                <!-- Page arrière -->
+                <div class="page back-cover">
+                    <div class="page-content">
+                        <p class="back-text">Mon carnet d'inspirations</p>
+                    </div>
+                </div>
+            </div>
+            <div class="book-nav">
+                <button id="prevPage" class="book-button">Page précédente</button>
+                <button id="nextPage" class="book-button">Page suivante</button>
+            </div>
+        </div>
+    </div>
+</section>
 
   <!-- Section Footer -->
   <footer class="section-footer">
@@ -1220,6 +1273,7 @@ Ce goût pour l’esthétique et l’expérience utilisateur m’a naturellement
     </div>
   </footer>
 
+
   <script>
     // Menu burger toggle
     function toggleMenu() {
@@ -1258,7 +1312,34 @@ Ce goût pour l’esthétique et l’expérience utilisateur m’a naturellement
         card.classList.toggle('is-flipped');
       });
     });
-  </script>
 
+    // Livre interactif - Navigation
+    let currentPage = 0;
+    const pages = document.querySelectorAll('.book .page');
+
+    function updateBookDisplay() {
+      pages.forEach((page, index) => {
+        page.style.display = (index === currentPage) ? 'block' : 'none';
+      });
+    }
+
+    document.getElementById('nextPage').addEventListener('click', () => {
+      if (currentPage < pages.length - 1) {
+        currentPage++;
+        updateBookDisplay();
+      }
+    });
+
+    document.getElementById('prevPage').addEventListener('click', () => {
+      if (currentPage > 0) {
+        currentPage--;
+        updateBookDisplay();
+      }
+    });
+
+    // Initialisation
+    updateBookDisplay();
+  </script>
+  <script src="js/book.js"></script>
 </body>
 </html>

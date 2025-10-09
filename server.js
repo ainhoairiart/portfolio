@@ -4,8 +4,14 @@ const path = require('path');
 
 const server = http.createServer((req, res) => {
   let filePath = '.' + req.url;
+
+  // Gestion de la page d'accueil
   if (filePath === './') {
     filePath = './index.html';
+  }
+  // Gestion des routes sans extension
+  else if (!path.extname(filePath)) {
+    filePath += '.html';
   }
 
   const extname = String(path.extname(filePath)).toLowerCase();
@@ -32,8 +38,17 @@ const server = http.createServer((req, res) => {
   fs.readFile(filePath, (error, content) => {
     if (error) {
       if (error.code == 'ENOENT') {
-        res.writeHead(404, { 'Content-Type': 'text/html' });
-        res.end('404 - File not found: ' + filePath, 'utf-8');
+        // Essayer avec .html si le fichier n'est pas trouvé
+        const htmlPath = filePath.endsWith('.html') ? filePath : filePath + '.html';
+        fs.readFile(htmlPath, (err, htmlContent) => {
+          if (err) {
+            res.writeHead(404, { 'Content-Type': 'text/html' });
+            res.end('404 - File not found: ' + req.url, 'utf-8');
+          } else {
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(htmlContent, 'utf-8');
+          }
+        });
       } else {
         res.writeHead(500);
         res.end('Sorry, check with the site admin for error: ' + error.code + ' ..\n');

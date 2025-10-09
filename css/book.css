@@ -1,0 +1,148 @@
+.book-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.book {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    perspective: 1500px;
+    margin-bottom: 20px;
+}
+
+.page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transform-origin: left center;
+    transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-style: preserve-3d;
+    cursor: pointer;
+    border-radius: 5px 10px 10px 5px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cover {
+    background: var(--terra);
+    z-index: 20;
+}
+
+.cover .page-content {
+    background: var(--terra);
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.cover h2 {
+    font-family: 'Brittany', cursive;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.cover-image {
+    width: 80%;
+    height: 60%;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.back-cover {
+    background: var(--terra);
+    z-index: 0;
+}
+
+.back-cover .page-content {
+    background: var(--terra);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: 'Brittany', cursive;
+    font-size: 1.5em;
+    padding: 20px;
+    text-align: center;
+}
+
+.page-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px;
+    box-sizing: border-box;
+    background: white;
+}
+
+.table-contents {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: center;
+    font-family: 'Poppins Regular', sans-serif;
+}
+
+.table-contents li {
+    margin: 15px 0;
+    color: var(--ink);
+    font-size: 1.1em;
+}
+
+.page h2 {
+    color: var(--terra);
+    margin-bottom: 20px;
+    font-family: 'Poppins Regular', sans-serif;
+}
+
+.page p {
+    color: var(--ink);
+    line-height: 1.6;
+    text-align: center;
+    font-family: 'Poppins Regular', sans-serif;
+}
+
+.page.flipped {
+    transform: rotateY(-180deg);
+}
+
+.book-nav {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.book-button {
+    padding: 10px 20px;
+    background: var(--terra);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Poppins Regular', sans-serif;
+    transition: background 0.3s ease;
+}
+
+.book-button:hover {
+    background: #8b6249;
+}
+
+.book-button:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
