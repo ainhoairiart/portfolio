@@ -693,7 +693,7 @@
 .section-hobbies {
     max-width: 1360px;
     margin: 25px auto;
-    padding: 50px 70px;
+    padding: 60px 70px;
     border-radius: var(--radius-xl);
     background: linear-gradient(135deg, var(--terra) 0%, #c18a73 100%);
     position: relative;
@@ -708,6 +708,7 @@
     color: white;
     font-weight: 700;
     letter-spacing: -0.5px;
+    display: none; /* Masquer le titre - le livre parle de lui-même */
 }
 
 /* Conteneur du livre avec perspective 3D */
