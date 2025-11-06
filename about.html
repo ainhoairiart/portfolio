@@ -310,6 +310,119 @@
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     }
 
+    .book-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      perspective: 1000px;
+    }
+
+    .book {
+      position: relative;
+      width: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+
+    .page {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .page-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .page-icon {
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+
+    .page-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0 0 12px;
+      color: #3b2f28;
+    }
+
+    .page-text {
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0 0 12px;
+      color: #2e2620;
+    }
+
+    .page-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      background: rgba(175, 123, 96, 0.2);
+      color: #3b2f28;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 2px solid rgba(59, 47, 40, 0.2);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tag:hover {
+      background: rgba(175, 123, 96, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 47, 40, 0.2);
+    }
+
+    .cover-decoration, .back-cover-decoration {
+      font-size: 48px;
+      margin-top: 10px;
+    }
+
+    .book-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .book-btn {
+      background: var(--terra);
+      color: #fff;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .book-btn:hover {
+      background: transparent;
+      color: var(--terra);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(175, 123, 96, 0.3);
+    }
+
+    .page-indicator {
+      font-size: 16px;
+      color: var(--ink);
+    }
 
     /* Section Footer */
     .section-footer{
@@ -755,6 +868,155 @@ Ce goût pour l’esthétique et l’expérience utilisateur m’a naturellement
     </div>
   </section>
 
+  <!-- Section Mes Hobbies - Livre Interactif -->
+  <section class="section-hobbies">
+    <h2 class="hobbies-title">Mes passions</h2>
+
+    <div class="book-container">
+      <div class="book">
+        <!-- Double page 0 : Couverture (gauche vide) + Première de couverture (droite) -->
+        <div class="book-spread active" data-spread="0">
+          <div class="book-page left-page" style="background: transparent; box-shadow: none;"></div>
+          <div class="book-page right-page cover-front">
+            <div class="page-content">
+              <h3 class="book-title">Mes Passions</h3>
+              <p class="book-subtitle">Un voyage à travers mes hobbies</p>
+              <div class="cover-decoration">✨</div>
+            </div>
+            <div class="page-number">1</div>
+          </div>
+          <div class="book-spine"></div>
+        </div>
+
+        <!-- Double page 1 : Page de garde (gauche) + Cinéma (droite) -->
+        <div class="book-spread" data-spread="1">
+          <div class="book-page left-page page-guard">
+            <div class="page-content">
+              <p class="guard-text">Découvrez ce qui m'inspire...</p>
+            </div>
+            <div class="page-number">2</div>
+          </div>
+          <div class="book-page right-page page-cinema">
+            <div class="page-content">
+              <div class="page-icon">🎬</div>
+              <h3 class="page-title">Cinéma</h3>
+              <p class="page-text">
+                Passionnée par le 7ème art, j'adore découvrir de nouveaux films,
+                des classiques du cinéma français aux blockbusters internationaux.
+                Le cinéma est pour moi une source d'inspiration créative infinie.
+              </p>
+              <div class="page-tags">
+                <span class="tag">Drame</span>
+                <span class="tag">Comédie</span>
+                <span class="tag">Sci-Fi</span>
+              </div>
+            </div>
+            <div class="page-number">3</div>
+          </div>
+          <div class="book-spine"></div>
+        </div>
+
+        <!-- Double page 2 : Animaux (gauche) + Sport (droite) -->
+        <div class="book-spread" data-spread="2">
+          <div class="book-page left-page page-animaux">
+            <div class="page-content">
+              <div class="page-icon">🐾</div>
+              <h3 class="page-title">Animaux</h3>
+              <p class="page-text">
+                Grande amoureuse des animaux, je trouve leur compagnie apaisante
+                et enrichissante. Observer la nature et interagir avec les animaux
+                me rappelle l'importance de préserver notre environnement.
+              </p>
+              <div class="page-tags">
+                <span class="tag">Chiens</span>
+                <span class="tag">Chats</span>
+                <span class="tag">Nature</span>
+              </div>
+            </div>
+            <div class="page-number">4</div>
+          </div>
+          <div class="book-page right-page page-sport">
+            <div class="page-content">
+              <div class="page-icon">⚽</div>
+              <h3 class="page-title">Sport</h3>
+              <p class="page-text">
+                Le sport fait partie intégrante de ma vie. Il m'aide à maintenir
+                un équilibre entre corps et esprit, à me dépasser et à rester
+                énergique pour relever tous les défis du quotidien.
+              </p>
+              <div class="page-tags">
+                <span class="tag">Running</span>
+                <span class="tag">Yoga</span>
+                <span class="tag">Fitness</span>
+              </div>
+            </div>
+            <div class="page-number">5</div>
+          </div>
+          <div class="book-spine"></div>
+        </div>
+
+        <!-- Double page 3 : Nature (gauche) + Page de garde finale (droite) -->
+        <div class="book-spread" data-spread="3">
+          <div class="book-page left-page page-nature">
+            <div class="page-content">
+              <div class="page-icon">🌿</div>
+              <h3 class="page-title">Nature</h3>
+              <p class="page-text">
+                La nature est ma source de ressourcement. Randonnées en montagne,
+                balades en forêt ou simplement observer un coucher de soleil me
+                permet de me reconnecter à l'essentiel et de trouver l'équilibre.
+              </p>
+              <div class="page-tags">
+                <span class="tag">Randonnée</span>
+                <span class="tag">Forêt</span>
+                <span class="tag">Écologie</span>
+              </div>
+            </div>
+            <div class="page-number">6</div>
+          </div>
+          <div class="book-page right-page page-guard">
+            <div class="page-content">
+              <p class="guard-text">Ces passions nourrissent ma créativité</p>
+            </div>
+            <div class="page-number">7</div>
+          </div>
+          <div class="book-spine"></div>
+        </div>
+
+        <!-- Double page 4 : Page blanche (gauche) + Quatrième de couverture (droite) -->
+        <div class="book-spread" data-spread="4">
+          <div class="book-page left-page" style="background: white; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);">
+            <div class="page-number">8</div>
+          </div>
+          <div class="book-page right-page cover-back">
+            <div class="page-content">
+              <h3 class="back-cover-title">Merci !</h3>
+              <p class="back-cover-text">
+                Ces passions enrichissent mon quotidien et nourrissent ma créativité.
+                Elles font partie intégrante de qui je suis.
+              </p>
+              <div class="back-cover-decoration">💫</div>
+            </div>
+          </div>
+          <div class="book-spine"></div>
+        </div>
+      </div>
+
+      <!-- Contrôles de navigation -->
+      <div class="book-controls">
+        <button class="book-btn btn-prev" id="prevPageBook">
+          <span>←</span> Précédent
+        </button>
+        <div class="page-indicator">
+          Double page <span class="current-page">1</span> / <span class="total-pages">5</span>
+        </div>
+        <button class="book-btn btn-next" id="nextPageBook">
+          Suivant <span>→</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
   <!-- Section Footer -->
   <footer class="section-footer">
     <div class="footer-container">
@@ -845,6 +1107,48 @@ Ce goût pour l’esthétique et l’expérience utilisateur m’a naturellement
         card.classList.toggle('is-flipped');
       });
     });
+
+    // Livre interactif - Navigation par doubles pages
+    const spreads = document.querySelectorAll('.book-spread');
+    const prevPageBtn = document.getElementById('prevPageBook');
+    const nextPageBtn = document.getElementById('nextPageBook');
+    const currentPageIndicator = document.querySelector('.current-page');
+    const totalPagesIndicator = document.querySelector('.total-pages');
+
+    let currentSpread = 0;
+    const totalSpreads = spreads.length;
+
+    function updateBookDisplay() {
+      // Afficher uniquement la double page active
+      spreads.forEach((spread, index) => {
+        spread.classList.toggle('active', index === currentSpread);
+      });
+
+      // Mettre à jour l'indicateur
+      currentPageIndicator.textContent = currentSpread + 1;
+      totalPagesIndicator.textContent = totalSpreads;
+
+      // Gérer l'état des boutons
+      prevPageBtn.disabled = currentSpread === 0;
+      nextPageBtn.disabled = currentSpread === totalSpreads - 1;
+    }
+
+    nextPageBtn.addEventListener('click', () => {
+      if (currentSpread < totalSpreads - 1) {
+        currentSpread++;
+        updateBookDisplay();
+      }
+    });
+
+    prevPageBtn.addEventListener('click', () => {
+      if (currentSpread > 0) {
+        currentSpread--;
+        updateBookDisplay();
+      }
+    });
+
+    // Initialisation
+    updateBookDisplay();
   </script>
 </body>
 </html>
