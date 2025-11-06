@@ -887,69 +887,158 @@
 
 /* ===== PREMIÈRE DE COUVERTURE AMÉLIORÉE ===== */
 .cover-front .page-content {
-    background: linear-gradient(135deg, #E8B46E 0%, #f0c77e 50%, #f5d599 100%);
-    border-radius: 24px 4px 4px 24px;
+    background:
+        /* Motif vichy uniforme sur toute la surface */
+        repeating-linear-gradient(
+            0deg,
+            #8B6A58 0px,
+            #8B6A58 20px,
+            #E7D6B9 20px,
+            #E7D6B9 40px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            #8B6A58 0px,
+            #8B6A58 20px,
+            #E7D6B9 20px,
+            #E7D6B9 40px
+        );
+    background-blend-mode: multiply;
+    border-radius: 0;
     position: relative;
-    overflow: hidden;
-    box-shadow: inset 0 0 60px rgba(255, 255, 255, 0.2);
+    overflow: visible;
+    box-shadow:
+        inset 0 0 60px rgba(0, 0, 0, 0.05),
+        0 4px 20px rgba(0, 0, 0, 0.1);
+    /* Ajustement pour centrer le cadre en tenant compte de la reliure */
+    padding-left: 60px;
+    padding-right: 40px;
 }
 
 .cover-front .page-content::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background:
-        radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.1) 0%, transparent 40%),
-        radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 30%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        /* Texture papier grain fin */
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.015) 2px,
+            rgba(0, 0, 0, 0.015) 4px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.015) 2px,
+            rgba(0, 0, 0, 0.015) 4px
+        );
     pointer-events: none;
-    animation: shimmer 8s ease-in-out infinite;
+    z-index: 1;
 }
 
-@keyframes shimmer {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    50% { transform: translate(2%, 2%) rotate(2deg); }
+/* Suppression du pseudo-élément ::after pour avoir un motif plat et uniforme */
+.cover-front .page-content::after {
+    content: none;
 }
 
-.book-title {
-    font-family: 'Brittany', cursive;
-    font-size: 52px;
-    color: white;
-    margin: 0 0 20px;
+/* Liseré vertical gauche - Reliure de carnet */
+.cover-front {
     position: relative;
-    text-shadow:
-        2px 2px 4px rgba(0, 0, 0, 0.2),
-        0 0 20px rgba(255, 255, 255, 0.3);
+    border-radius: 24px 4px 4px 24px;
+    overflow: hidden;
+}
+
+.cover-front::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10%;
+    height: 100%;
+    background: #553B2C;
+    z-index: 10;
+    box-shadow: inset -6px 0 8px rgba(0, 0, 0, 0.15);
+    border-radius: 0;
+}
+
+/* Cadre central avec double contour pour le texte */
+.cover-text-frame {
+    position: relative;
+    z-index: 3;
+    padding: 60px 50px;
+    border: 2px solid #5C4435;
+    outline: 1px solid #CDBBA7;
+    outline-offset: 0;
+    background: #F3E9D8;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Titre "Mes hobbies" sur la couverture */
+.book-title {
+    font-family: 'Poppins Regular', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    margin: 0 0 20px;
+    color: var(--ink);
+    letter-spacing: -1px;
     line-height: 1.2;
 }
 
-.book-subtitle {
-    font-size: 19px;
-    color: rgba(255, 255, 255, 0.95);
-    margin: 0;
-    position: relative;
-    font-weight: 500;
+/* Auteur sur la couverture */
+.book-author {
     font-family: 'Poppins Regular', sans-serif;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+    color: var(--ink);
+    opacity: 0.7;
 }
 
-.cover-decoration {
-    font-size: 72px;
-    margin-top: 35px;
-    animation: float 4s ease-in-out infinite;
-    position: relative;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
-}
-
-@keyframes float {
+/* Animations des feuilles - peuvent être supprimées mais gardées pour référence future */
+@keyframes leafFloat1 {
     0%, 100% {
-        transform: translateY(0) rotate(-3deg) scale(1);
+        transform: rotate(-25deg) translateY(0) scale(1);
     }
     50% {
-        transform: translateY(-25px) rotate(3deg) scale(1.05);
+        transform: rotate(-20deg) translateY(-3px) scale(1.05);
+    }
+}
+
+@keyframes leafFloat2 {
+    0%, 100% {
+        transform: rotate(25deg) translateY(0) scale(1);
+    }
+    50% {
+        transform: rotate(30deg) translateY(-4px) scale(1.08);
+    }
+}
+
+/* Feuilles supplémentaires sur la couverture */
+.cover-front .page-content .cover-text-frame {
+    position: relative;
+}
+
+/* Petites feuilles décoratives - SUPPRIMÉES */
+.cover-front::after {
+    content: none;
+}
+
+@keyframes leafSway {
+    0%, 100% {
+        transform: rotate(0deg) translateX(0);
+    }
+    25% {
+        transform: rotate(5deg) translateX(2px);
+    }
+    75% {
+        transform: rotate(-5deg) translateX(-2px);
     }
 }
 
@@ -1299,7 +1388,7 @@
     }
 
     .book-title {
-        font-size: 46px;
+        font-size: 30px;
     }
 
     .page-icon {
@@ -1354,7 +1443,7 @@
     }
 
     .book-title {
-        font-size: 44px;
+        font-size: 30px;
     }
 
     .page-icon {
@@ -1411,7 +1500,7 @@
     }
 
     .book-title {
-        font-size: 38px;
+        font-size: 30px;
     }
 
     .page-icon {
