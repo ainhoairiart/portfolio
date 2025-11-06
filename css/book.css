@@ -1,148 +1,333 @@
-.book-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+/**
+ * Portfolio Ainhoa - Styles des compétences (version améliorée)
+ * Design professionnel avec attention aux détails
+ */
+
+:root {
+    --terra: #AF7B60;
+    --beige: #E7D6B9;
+    --ink: #553B2C;
+    --circle: #A19987;
+    --miel: #E8B46E;
+    --radius-xl: 28px;
 }
 
-.book {
+/* Section principale des compétences */
+.section-competences {
+    max-width: 1360px;
+    margin: 25px auto;
+    padding: 50px 70px;
+    border-radius: var(--radius-xl);
+    background: var(--beige);
     position: relative;
-    width: 300px;
-    height: 400px;
-    perspective: 1500px;
-    margin-bottom: 20px;
 }
 
-.page {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    transform-origin: left center;
-    transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
-    transform-style: preserve-3d;
-    cursor: pointer;
-    border-radius: 5px 10px 10px 5px;
-    background: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.cover {
-    background: var(--terra);
-    z-index: 20;
-}
-
-.cover .page-content {
-    background: var(--terra);
-    color: white;
+.competences-title {
+    font-family: 'Poppins Regular', sans-serif;
+    font-size: 42px;
+    margin: 0 0 50px;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
-.cover h2 {
-    font-family: 'Brittany', cursive;
-    font-size: 2em;
-    margin-bottom: 20px;
+/* Grille des cartes */
+.competences-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 35px;
 }
 
-.cover-image {
-    width: 80%;
-    height: 60%;
-    object-fit: cover;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-.back-cover {
-    background: var(--terra);
-    z-index: 0;
-}
-
-.back-cover .page-content {
-    background: var(--terra);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    font-family: 'Brittany', cursive;
-    font-size: 1.5em;
-    padding: 20px;
-    text-align: center;
-}
-
-.page-content {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 30px;
-    box-sizing: border-box;
+/* Carte de compétence - conteneur */
+.competence-category {
     background: white;
-}
-
-.table-contents {
-    list-style: none;
+    border-radius: 20px;
+    min-height: 360px;
     padding: 0;
-    margin: 20px 0;
-    text-align: center;
-    font-family: 'Poppins Regular', sans-serif;
-}
-
-.table-contents li {
-    margin: 15px 0;
-    color: var(--ink);
-    font-size: 1.1em;
-}
-
-.page h2 {
-    color: var(--terra);
-    margin-bottom: 20px;
-    font-family: 'Poppins Regular', sans-serif;
-}
-
-.page p {
-    color: var(--ink);
-    line-height: 1.6;
-    text-align: center;
-    font-family: 'Poppins Regular', sans-serif;
-}
-
-.page.flipped {
-    transform: rotateY(-180deg);
-}
-
-.book-nav {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.book-button {
-    padding: 10px 20px;
-    background: var(--terra);
-    color: white;
-    border: none;
-    border-radius: 5px;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 1px solid rgba(161, 153, 135, 0.2);
     cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.competence-category:hover {
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    transform: translateY(-8px);
+    border-color: var(--terra);
+}
+
+/* Recto et verso - positionnement absolu pour superposition */
+.competence-category .front,
+.competence-category .back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 35px 30px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Recto visible par défaut */
+.competence-category .front {
+    opacity: 1;
+    visibility: visible;
+    background: white;
+    z-index: 2;
+}
+
+/* Verso caché par défaut */
+.competence-category .back {
+    opacity: 0;
+    visibility: hidden;
+    background: white;
+    z-index: 1;
+    transform: scale(0.95);
+}
+
+/* Quand la carte est retournée */
+.competence-category.is-flipped .front {
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+    transform: scale(0.95);
+}
+
+.competence-category.is-flipped .back {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+    transform: scale(1);
+}
+
+/* Style du titre (recto) */
+.competence-category .front h3 {
+    font-size: 28px;
+    margin: 0;
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.3px;
+    padding: 0 15px;
+}
+
+/* Style du verso */
+.competence-category .back {
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 35px 28px;
+}
+
+.competence-category .back ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+}
+
+.competence-category .back li {
+    margin-bottom: 14px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: rgba(231, 214, 185, 0.3);
+    color: var(--ink);
+    border-left: 5px solid var(--miel);
+    font-size: 15px;
+    line-height: 1.6;
     font-family: 'Poppins Regular', sans-serif;
-    transition: background 0.3s ease;
+    transition: all 0.25s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
 
-.book-button:hover {
-    background: #8b6249;
+.competence-category .back li:hover {
+    background: rgba(231, 214, 185, 0.5);
+    transform: translateX(4px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
-.book-button:disabled {
-    background: #cccccc;
-    cursor: not-allowed;
+.competence-category .back li:last-child {
+    margin-bottom: 0;
 }
+
+/* Carte 1 - Conception UX/UI - Terracotta */
+.competence-category:nth-child(1) .front {
+    background: linear-gradient(135deg, var(--terra) 0%, #c18a73 100%);
+}
+
+.competence-category:nth-child(1) .front h3 {
+    color: white;
+}
+
+.competence-category:nth-child(1) .back {
+    background: linear-gradient(135deg, var(--terra) 0%, #c18a73 100%);
+}
+
+.competence-category:nth-child(1) .back li {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-left: 5px solid var(--miel);
+    backdrop-filter: blur(10px);
+}
+
+.competence-category:nth-child(1) .back li:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Carte 2 - Développement - Circle */
+.competence-category:nth-child(2) .front {
+    background: linear-gradient(135deg, var(--circle) 0%, #b5ad9b 100%);
+    border: none;
+}
+
+.competence-category:nth-child(2) .front h3 {
+    color: white;
+}
+
+.competence-category:nth-child(2) .back {
+    background: linear-gradient(135deg, var(--circle) 0%, #b5ad9b 100%);
+}
+
+.competence-category:nth-child(2) .back li {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-left: 5px solid var(--miel);
+    backdrop-filter: blur(10px);
+}
+
+.competence-category:nth-child(2) .back li:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Carte 3 - Gestion de projet - Terracotta */
+.competence-category:nth-child(3) .front {
+    background: linear-gradient(135deg, var(--terra) 0%, #c18a73 100%);
+}
+
+.competence-category:nth-child(3) .front h3 {
+    color: white;
+}
+
+.competence-category:nth-child(3) .back {
+    background: linear-gradient(135deg, var(--terra) 0%, #c18a73 100%);
+}
+
+.competence-category:nth-child(3) .back li {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-left: 5px solid var(--miel);
+    backdrop-filter: blur(10px);
+}
+
+.competence-category:nth-child(3) .back li:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Indicateur visuel pour clic - amélioré */
+.competence-category::after {
+    content: "Cliquez pour voir les détails";
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.8);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 3;
+    background: rgba(0,0,0,0.2);
+    padding: 6px 14px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    letter-spacing: 0.3px;
+}
+
+.competence-category:nth-child(2)::after {
+    color: rgba(255,255,255,0.8);
+    background: rgba(0,0,0,0.2);
+}
+
+.competence-category:hover::after {
+    opacity: 1;
+}
+
+.competence-category.is-flipped::after {
+    content: "Cliquez pour revenir";
+    color: rgba(255,255,255,0.8);
+    background: rgba(0,0,0,0.2);
+}
+
+.competence-category.is-flipped:nth-child(2)::after {
+    color: rgba(255,255,255,0.8);
+    background: rgba(0,0,0,0.2);
+}
+
+/* Effet de brillance subtil au hover */
+.competence-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transition: left 0.5s ease;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.competence-category:hover::before {
+    left: 100%;
+}
+
+/* Responsive optimisé */
+@media (max-width: 768px) {
+    .section-competences {
+        padding: 35px 20px;
+    }
+
+    .competences-title {
+        font-size: 36px;
+        margin-bottom: 35px;
+    }
+
+    .competences-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .competence-category {
+        min-height: 320px;
+    }
+
+    .competence-category .front h3 {
+        font-size: 24px;
+    }
+
+    .competence-category .front,
+    .competence-category .back {
+        padding: 28px 22px;
+    }
+
+    .competence-category .back li {
+        font-size: 14px;
+        padding: 12px 14px;
+        margin-bottom: 12px;
+    }
+
+    .competence-category:hover {
+        transform: translateY(-4px);
+    }
+}
+
+/* fin du fichier */
